@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="TextColor">#FFFFFFFF</color>
+
+    <color name="Background">#FF000000</color>
+
+    <color name="AppBar">#9C0202</color>
+
+    <color name="Buttons">#9C0202</color>
+
+    <color name="Icons">#9C0202</color>
+
+    <color name="ButtomBar">#FF000000</color>
+
+    <color name="TableHeader">#FF000000</color>
+
+    <color name="TableRows">#303030</color>
+
+</resources>
