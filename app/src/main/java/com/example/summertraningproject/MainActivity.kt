@@ -2,10 +2,12 @@ package com.example.summertraningproject
 
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -28,6 +30,16 @@ class MainActivity : AppCompatActivity() {
 
         ForgotPass.setOnClickListener{
             Toast.makeText(this," i forgot my password ",Toast.LENGTH_SHORT).show()
+        }
+
+        val img = findViewById<ImageView>(R.id.imageView)
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+            // It's currently in dark mode
+            img.setImageResource(R.drawable.gray)
+        } else {
+            // It's currently in light mode
+            img.setImageResource(R.drawable.black)
         }
 
     }

@@ -11,20 +11,20 @@
         android:id="@+id/editTextTextPersonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#30ffffff"
+        android:background="#30C8C8C8"
+        android:drawableStart="@drawable/outline_supervised_user_circle_24"
         android:ems="10"
         android:fontFamily="@font/raleway_semibold"
         android:hint="Enter your username"
-        android:drawableStart="@drawable/outline_supervised_user_circle_24"
         android:inputType="textPersonName"
         android:textColorHint="#808080"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.353"
+        app:layout_constraintHorizontal_bias="0.351"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.334" />
+        app:layout_constraintVertical_bias="0.371" />
 
     <Button
         android:id="@+id/button2"
@@ -39,41 +39,41 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.581" />
+        app:layout_constraintVertical_bias="0.631" />
 
     <EditText
         android:id="@+id/editTextTextPassword3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#30ffffff"
+        android:background="#30C8C8C8"
+        android:drawableStart="@drawable/outline_lock_24"
         android:ems="10"
         android:fontFamily="@font/raleway_semibold"
         android:hint="Enter password"
-        android:drawableStart="@drawable/outline_lock_24"
         android:inputType="textPassword"
         android:textColorHint="#808080"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.353"
+        app:layout_constraintHorizontal_bias="0.351"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.418" />
+        app:layout_constraintVertical_bias="0.455" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="297dp"
-        android:layout_height="199dp"
+        android:layout_width="415dp"
+        android:layout_height="299dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.03"
-        app:srcCompat="@drawable/p104" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/black" />
 
     <TextView
         android:id="@+id/textView3"

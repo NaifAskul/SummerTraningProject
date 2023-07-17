@@ -2,12 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusableInTouchMode="true"
-    android:background="@color/Background">
-
+    android:orientation="vertical">
 
 
     <ScrollView
@@ -36,30 +34,59 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.003">
 
-                <TextView
-                    android:id="@+id/textView6"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/AppBar"
-                    android:fontFamily="@font/raleway_semibold"
-                    android:gravity="center"
-                    android:text="Settings"
-                    android:textAlignment="center"
-                    android:textColor="@color/TextColor"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:visibility="visible" />
+                    android:layout_height="match_parent">
 
-                <Button
-                    android:id="@+id/button1"
-                    android:layout_width="123dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/AppBar"
-                    android:backgroundTint="@color/AppBar"
-                    android:fontFamily="@font/raleway_semibold"
-                    android:text="@string/character"
-                    android:textColor="@color/TextColor"
-                    android:textSize="34sp" />
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/AppBar"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="Settings"
+                        android:textAlignment="center"
+                        android:textColor="@color/TextColor"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/button1"
+                        android:layout_width="123dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/AppBar"
+                        android:backgroundTint="@color/AppBar"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="@string/character"
+                        android:textColor="@color/TextColor"
+                        android:textSize="34sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/textView6"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="32dp"
+                        android:layout_height="40dp"
+                        android:clickable="true"
+                        android:onClick="EditMethod"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                        app:layout_constraintEnd_toEndOf="@+id/textView6"
+                        app:layout_constraintHorizontal_bias="0.957"
+                        app:layout_constraintStart_toStartOf="@+id/textView6"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.448"
+                        app:srcCompat="@drawable/baseline_edit_24" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
 
@@ -194,7 +221,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:fontFamily="@font/raleway_semibold"
-                        android:text=" Courtesy Title"
+                        android:text="Courtesy Title"
                         android:textColor="@color/TextColor"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -462,20 +489,6 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.209" />
-
-                    <ImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="32dp"
-                        android:layout_height="40dp"
-                        android:clickable="true"
-                        android:onClick="EditMethod"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.904"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.041"
-                        app:srcCompat="@drawable/baseline_edit_24" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

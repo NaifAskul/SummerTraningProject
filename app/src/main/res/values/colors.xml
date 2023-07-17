@@ -12,9 +12,9 @@
 
     <color name="TextColor">#FF000000</color>
 
-    <color name="Background">#E4E8FF</color>
+    <color name="Background">#F8F7F6</color>
 
-    <color name="AppBar">#D7E0FF</color>
+    <color name="AppBar">#F0EEEC</color>
 
     <color name="Buttons">#FF000000</color>
 
@@ -22,9 +22,9 @@
 
     <color name="ButtomBar">#FF000000</color>
 
-    <color name="TableHeader">#C2C3FF</color>
+    <color name="TableHeader">#F0EEEC</color>
 
-    <color name="TableRows">#D4D4FD</color>
+    <color name="TableRows">#FFFFFF</color>
 
 
 
