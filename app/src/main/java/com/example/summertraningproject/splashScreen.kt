@@ -2,6 +2,7 @@ package com.example.summertraningproject
 
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,17 @@ class splashScreen : AppCompatActivity() {
 
         var splash = findViewById<ImageView>(R.id.iv_note)
 
+
+        val img = findViewById<ImageView>(R.id.iv_note)
+        val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+            // It's currently in dark mode
+            img.setImageResource(R.drawable.gray)
+        } else {
+            // It's currently in light mode
+            img.setImageResource(R.drawable.black)
+        }
+
         splash.alpha = 0f
 
         splash.animate().setDuration(1300).alpha(1f).withEndAction{
@@ -23,6 +35,7 @@ class splashScreen : AppCompatActivity() {
             startActivity(intent)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
         }
+
 
     }
 
