@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="TextColor">#FFFFFFFF</color>
+
+    <color name="Background">#07272D</color>
+
+    <color name="MenuBackground">#FF000000</color>
+
+    <color name="AppBar">#041B21</color>
+
+    <color name="Buttons">#FF000000</color>
+
+    <color name="Icons">#FFFFFFFF</color>
+
+    <color name="ButtomBar">#041B21</color>
+
+    <color name="TableHeader">#041B21</color>
+
+    <color name="TableRows">#64696A</color>
+
+</resources>

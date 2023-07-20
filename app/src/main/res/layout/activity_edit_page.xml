@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:background="@color/Background">
+
+    <ScrollView
+
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView4"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:layout_alignParentBottom="true"
+                app:cardBackgroundColor="#C8D4FF"
+                app:cardElevation="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.003">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/AppBar"
+                    android:fontFamily="@font/raleway_semibold"
+                    android:gravity="center"
+                    android:text="Edit Page"
+                    android:textAlignment="center"
+                    android:textColor="@color/TextColor"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="123dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/AppBar"
+                    android:backgroundTint="@color/AppBar"
+                    android:fontFamily="@font/raleway_semibold"
+                    android:text="@string/character"
+                    android:textColor="@color/TextColor"
+                    android:textSize="34sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="326dp"
+                    android:padding="16dp"
+                    tools:context=".ProfileActivity">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profileImage"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_centerHorizontal="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/baseline_person_24" />
+
+                    <TextView
+                        android:id="@+id/profileName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/profileImage"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="16dp"
+                        android:text="Full name"
+                        android:textColor="@color/TextColor"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/profileDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/profileName"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:text="job"
+                        android:textColor="@color/TextColor"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/profileEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/profileName"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="50dp"
+                        android:text="N123456@gmail.com"
+                        android:textColor="@color/TextColor"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/profileEmail4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/profileName"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="50dp"
+                        android:text="N123456@gmail.com"
+                        android:textColor="@color/TextColor"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Interests"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/profileName"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="100dp"
+                        android:text="Interests"
+                        android:textColor="@color/TextColor"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="370dp"
+                android:layout_height="727dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="11dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView4"
+                app:layout_constraintVertical_bias="0.659">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="747dp">
+
+
+                    <TextView
+                        android:id="@+id/textView29"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Edit Details"
+                        android:textColor="@color/TextColor"
+                        android:textSize="21sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.043" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="First Name*"
+                        android:textColor="@color/TextColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.283" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Courtesy Title"
+                        android:textColor="@color/TextColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.207" />
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Primary Email"
+                        android:textColor="@color/TextColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.129" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Middle Name"
+                        android:textColor="@color/TextColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.362" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Last Name*"
+                        android:textColor="@color/TextColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.448" />
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Suffix"
+                        android:textColor="@color/TextColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.527" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Default Job Title"
+                        android:textColor="@color/TextColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.611" />
+
+                    <TextView
+                        android:id="@+id/textView32"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="30dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Employee Start Date"
+                        android:textColor="@color/TextColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.737" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="40dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Employee Number"
+                        android:textColor="@color/TextColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.801" />
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Gender"
+                        android:textColor="@color/TextColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.875" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="50dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="CNR Starting Balance"
+                        android:textColor="@color/TextColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.948" />
+
+                    <TextView
+                        android:id="@+id/textView33"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Citizenship"
+                        android:textColor="@color/TextColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.684" />
+
+                    <Spinner
+                        android:id="@+id/spinner1"
+                        android:layout_width="258dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="124dp"
+                        android:layout_marginTop="144dp"
+                        android:entries="@array/CourtesyTitle"
+                        android:hint="None"
+                        android:inputType="none"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Spinner
+                        android:id="@+id/spinner2"
+                        android:layout_width="258dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="116dp"
+                        android:layout_marginTop="495dp"
+                        android:entries="@array/Citizenship"
+                        android:hint="None"
+                        android:inputType="none"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Spinner
+                        android:id="@+id/spinner3"
+                        android:layout_width="258dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="96dp"
+                        android:layout_marginBottom="88dp"
+                        android:entries="@array/Gender"
+                        android:hint="None"
+                        android:inputType="none"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <EditText
+                        android:id="@+id/editTextText"
+                        android:layout_width="224dp"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="74dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/custom_input"
+                        android:ems="10"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:hint="   Enter New Email"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor"
+                        android:textColorHint="@color/TextColor"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/editTextText2"
+                        android:layout_width="225dp"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="176dp"
+                        android:layout_marginEnd="28dp"
+                        android:background="@drawable/custom_input"
+                        android:ems="10"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:hint="   Enter Your First Name"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor"
+                        android:textColorHint="@color/TextColor"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/editTextText3"
+                        android:layout_width="224dp"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="240dp"
+                        android:layout_marginEnd="28dp"
+                        android:background="@drawable/custom_input"
+                        android:ems="10"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:hint="   Enter Your Middle Name"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor"
+                        android:textColorHint="@color/TextColor"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/editTextText4"
+                        android:layout_width="220dp"
+                        android:layout_height="47dp"
+                        android:layout_marginTop="304dp"
+                        android:layout_marginEnd="40dp"
+                        android:background="@drawable/custom_input"
+                        android:ems="10"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:hint="   Enter Your Last Name"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor"
+                        android:textColorHint="@color/TextColor"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/editTextText6"
+                        android:layout_width="220dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="425dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/custom_input"
+                        android:ems="10"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:hint="   Enter Your Default Job Title"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor"
+                        android:textColorHint="@color/TextColor"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/editTextText7"
+                        android:layout_width="201dp"
+                        android:layout_height="43dp"
+                        android:layout_marginTop="528dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/custom_input"
+                        android:ems="10"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:hint="   Enter Your Emp Sdate"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor"
+                        android:textColorHint="@color/TextColor"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/editTextText11"
+                        android:layout_width="248dp"
+                        android:layout_height="43dp"
+                        android:layout_marginTop="370dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/custom_input"
+                        android:ems="10"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:hint="   Enter Your Suffix"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor"
+                        android:textColorHint="@color/TextColor"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/editTextText9"
+                        android:layout_width="193dp"
+                        android:layout_height="36dp"
+                        android:layout_marginTop="586dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/custom_input"
+                        android:ems="10"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:hint="   Enter New No"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor"
+                        android:textColorHint="@color/TextColor"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/editTextText10"
+                        android:layout_width="187dp"
+                        android:layout_height="42dp"
+                        android:layout_marginTop="680dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/custom_input"
+                        android:ems="10"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:hint="   Enter New CNR"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor"
+                        android:textColorHint="@color/TextColor"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView3"
+                android:layout_width="350dp"
+                android:layout_height="300dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="23dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="11dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView4"
+                app:layout_constraintVertical_bias="0.659">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <TextView
+                        android:id="@+id/textView40"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="System User Information"
+                        android:textColor="@color/TextColor"
+                        android:textSize="21sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.043" />
+
+                    <TextView
+                        android:id="@+id/textView41"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Username"
+                        android:textColor="@color/TextColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.255" />
+
+                    <TextView
+                        android:id="@+id/textView43"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Passowrd"
+                        android:textColor="@color/TextColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.464" />
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="180dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Interests"
+                        android:textColor="@color/TextColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.83" />
+
+                    <TextView
+                        android:id="@+id/textView44"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="Confirm Password"
+                        android:textColor="@color/TextColor"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.719" />
+
+                    <EditText
+                        android:id="@+id/editTextText13"
+                        android:layout_width="248dp"
+                        android:layout_height="43dp"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/custom_input"
+                        android:ems="10"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:hint="   Enter Your Username"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor"
+                        android:textColorHint="@color/TextColor"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/editTextText14"
+                        android:layout_width="248dp"
+                        android:layout_height="43dp"
+                        android:layout_marginTop="250dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/custom_input"
+                        android:ems="10"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:hint="   Enter Your Interests"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor"
+                        android:textColorHint="@color/TextColor"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/editTextText5"
+                        android:layout_width="248dp"
+                        android:layout_height="43dp"
+                        android:layout_marginTop="120dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/custom_input"
+                        android:ems="10"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:hint="   Enter Your Password"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor"
+                        android:textColorHint="@color/TextColor"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/editTextText15"
+                        android:layout_width="185dp"
+                        android:layout_height="41dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginBottom="72dp"
+                        android:background="@drawable/custom_input"
+                        android:ems="10"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:hint="   Confirm pass"
+                        android:inputType="text"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/TextColor"
+                        android:textColorHint="@color/TextColor"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="150dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/buttonshape"
+                android:text="Save"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

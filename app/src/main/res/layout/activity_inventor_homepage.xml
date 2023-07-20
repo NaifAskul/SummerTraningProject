@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:background="@color/Background">
+
+    <ScrollView
+
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView4"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:layout_alignParentBottom="true"
+                app:cardBackgroundColor="#C8D4FF"
+                app:cardElevation="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.003">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/AppBar"
+                    android:fontFamily="@font/raleway_semibold"
+                    android:gravity="center"
+                    android:text="Inventor HomePage"
+                    android:textAlignment="center"
+                    android:textColor="@color/TextColor"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/AppBar"
+                    android:backgroundTint="@color/AppBar"
+                    android:fontFamily="@font/raleway_semibold"
+                    android:text="@string/character"
+                    android:textColor="@color/TextColor"
+                    android:textSize="34sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="326dp"
+                    android:padding="16dp"
+                    tools:context=".ProfileActivity">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profileImage"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_centerHorizontal="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/baseline_person_24" />
+
+                    <TextView
+                        android:id="@+id/profileName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/profileImage"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="16dp"
+                        android:text="Full name"
+                        android:textColor="@color/TextColor"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/profileDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/profileName"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:text="job"
+                        android:textColor="@color/TextColor"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/profileEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/profileName"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="50dp"
+                        android:text="N123456@gmail.com"
+                        android:textColor="@color/TextColor"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/profileEmail4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/profileName"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="50dp"
+                        android:text="N123456@gmail.com"
+                        android:textColor="@color/TextColor"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Interests"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/profileName"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="100dp"
+                        android:text="Interests"
+                        android:textColor="@color/TextColor"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TableLayout
+                android:layout_width="352dp"
+                android:layout_height="603dp"
+                android:layout_margin="30dp"
+                android:background="@color/Background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.491"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/border1"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:padding="8dp"
+                        android:text="No. "
+                        android:textColor="@color/TextColor"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/border1"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:padding="8dp"
+                        android:text="Name"
+                        android:textColor="@color/TextColor"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/border1"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:padding="8dp"
+                        android:text="Status"
+                        android:textColor="@color/TextColor"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/border1"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:padding="8dp"
+                        android:text="Create Date"
+                        android:textColor="@color/TextColor"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="99dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/broder2"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:padding="8dp"
+                        android:text="No. "
+                        android:textColor="@color/TextColor"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:layout_width="77dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/broder2"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:padding="8dp"
+                        android:text="Name"
+                        android:textColor="@color/TextColor"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:layout_width="82dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/broder2"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:padding="8dp"
+                        android:text="Status"
+                        android:textColor="@color/TextColor"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/broder2"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:padding="8dp"
+                        android:text="Create Date"
+                        android:textColor="@color/TextColor"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
