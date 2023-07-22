@@ -17,7 +17,6 @@ class MainPage : AppCompatActivity() {
         binding = ActivityMainPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         replaceFragment(Home())
 
         binding.bottomNav.setOnItemSelectedListener {

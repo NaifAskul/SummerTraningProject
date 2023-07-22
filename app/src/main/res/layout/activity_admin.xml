@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Background"
-    tools:context=".MainActivity">
+    android:id="@+id/adminLayout"
+    android:background="@color/Background">
 
     <EditText
         android:id="@+id/emailEditText"
@@ -15,7 +15,7 @@
         android:drawableStart="@drawable/outline_supervised_user_circle_24"
         android:ems="10"
         android:fontFamily="@font/raleway_semibold"
-        android:hint="Enter your E-mail"
+        android:hint="Enter an E-mail"
         android:inputType="textPersonName"
         android:textColor="@color/TextColor"
         android:textColorHint="@color/TextColor"
@@ -29,21 +29,21 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="105dp"
+        android:layout_height="54dp"
         android:background="@drawable/buttonshape"
         android:backgroundTint="@color/Buttons"
         android:fontFamily="@font/raleway_semibold"
-        android:text="Login"
+        android:text="Register"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.661" />
+        app:layout_constraintVertical_bias="0.633" />
 
     <EditText
         android:id="@+id/PasswordEditText"
@@ -53,7 +53,7 @@
         android:drawableStart="@drawable/outline_lock_24"
         android:ems="10"
         android:fontFamily="@font/raleway_semibold"
-        android:hint="Enter password"
+        android:hint="Enter a password"
         android:inputType="textPassword"
         android:textColor="@color/TextColor"
         android:textColorHint="@color/TextColor"
@@ -63,7 +63,7 @@
         app:layout_constraintHorizontal_bias="0.352"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.483" />
+        app:layout_constraintVertical_bias="0.48" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -76,22 +76,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/black" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="234dp"
-        android:layout_height="24dp"
-        android:clickable="true"
-        android:gravity="center"
-        android:text="Forgot Your Password?"
-        android:textColor="@color/TextColor"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.361"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordEditText"
-        app:layout_constraintVertical_bias="0.4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

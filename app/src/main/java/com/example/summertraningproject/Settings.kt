@@ -85,6 +85,13 @@ class Settings : AppCompatActivity() {
             val intent = Intent(this, EditPage::class.java)
             startActivity(intent)
         }
+
+        val SignOut = findViewById<Button>(R.id.button)
+        SignOut.setOnClickListener {
+            FirebaseHelper.signOut()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 

@@ -1,6 +1,9 @@
 package com.example.summertraningproject
 
-data class InventorModel (
-    var username : String? = null,
-    var password: String? = null
-        )
+import java.io.Serializable
+
+data class InventorModel  (
+    var Email : String? = "None",
+    var password: String? = "None",
+    var inventorID: String? = "None",
+    var interests: String? = "None") : Serializable
