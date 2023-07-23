@@ -2,7 +2,7 @@ package com.example.summertraningproject
 
 import java.io.Serializable
 
-data class InventionModel(var No : String? = "None",
+data class InventionModel(var createDate : String? = "None",
                           var inventionName: String? = "None",
-                          var status: String? = "None",
-                          var CreateDate: String? = "None") : Serializable
+                          var no: String? = "None",
+                          var status: String? = "None") : Serializable

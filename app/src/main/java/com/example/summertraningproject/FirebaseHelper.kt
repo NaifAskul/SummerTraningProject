@@ -2,21 +2,28 @@ package com.example.summertraningproject
 
 import android.content.Context
 import android.content.Intent
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 object FirebaseHelper {
 
-    private val databaseInst: FirebaseDatabase = FirebaseDatabase.getInstance()
+    public val databaseInst: FirebaseDatabase = FirebaseDatabase.getInstance()
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     private val Reference: DatabaseReference = databaseInst.reference
+    private lateinit var userRecyclerview : RecyclerView
+    private lateinit var inventionsArrayList : ArrayList<InventionModel>
 
 
     // Function to sign in user with email and password
@@ -95,17 +102,45 @@ object FirebaseHelper {
         return auth.currentUser != null
     }
 
-    // Function to get data from Firebase in a coroutine-safe way
-    suspend fun getInventorsData(Email: String): String = withContext(Dispatchers.IO) {
-        val reference: DatabaseReference = databaseInst.getReference("Inventors").child(Email.replace(".",","))
-        val dataSnapshot: DataSnapshot = reference.get().await()
-        dataSnapshot.getValue(String::class.java) ?: ""
-    }
+    suspend fun getInventionsData(context: Context, findViewById1: Any,findViewById2: Any,findViewById3: Any) {
+        userRecyclerview = findViewById1 as RecyclerView
+        userRecyclerview.layoutManager = LinearLayoutManager(context)
+        userRecyclerview.setHasFixedSize(true)
+        inventionsArrayList = arrayListOf()
 
-    suspend fun getInventionsData(Email: String): String = withContext(Dispatchers.IO) {
-        val reference: DatabaseReference = databaseInst.getReference("Inventions").child(Email.replace(".",","))
-        val dataSnapshot: DataSnapshot = reference.get().await()
-        dataSnapshot.getValue(String::class.java) ?: ""
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                val dbref = FirebaseHelper.databaseInst.getReference("Inventions")
+                    .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+
+                val dataSnapshot = withContext(Dispatchers.IO) {
+                    dbref.get().await()
+                }
+
+                if (dataSnapshot.exists()) {
+                    val tempList: MutableList<InventionModel> = mutableListOf()
+
+                    for (userSnapshot in dataSnapshot.children) {
+                        val inv = userSnapshot.getValue(InventionModel::class.java)
+                        inv?.let { tempList.add(it) }
+                    }
+
+                    inventionsArrayList.addAll(tempList)
+                    userRecyclerview.adapter = MyAdapter(inventionsArrayList)
+                }else{
+
+                    val noDis = findViewById2 as TextView
+                    val clickhere = findViewById3 as TextView
+
+                    noDis.visibility = View.VISIBLE
+                    clickhere.visibility = View.VISIBLE
+
+
+                }
+            } catch (e: Exception) {
+                // Handle any exceptions or errors
+            }
+        }
     }
 
     // Function to insert Inventions data into Firebase in a coroutine-safe way
@@ -128,4 +163,5 @@ object FirebaseHelper {
         }
 
     }
+
 }
