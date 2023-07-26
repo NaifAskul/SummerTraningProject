@@ -35,8 +35,18 @@ class MainActivity : AppCompatActivity() {
         val ForgotPass = findViewById<TextView>(R.id.textView3)
 
         ForgotPass.setOnClickListener {
-            Toast.makeText(this, " i forgot my password ", Toast.LENGTH_SHORT).show()
+
+            val email = EmailEditText.text.toString().trim()
+
+            if (email.isEmpty()) {
+                EmailEditText.error = "Email is required"
+                return@setOnClickListener
+            }
+
+            ResetPassword(email)
         }
+
+
 
         val img = findViewById<ImageView>(R.id.imageView)
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
@@ -74,6 +84,20 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    private fun ResetPassword(email: String) {
+
+        FirebaseHelper.auth.sendPasswordResetEmail(email)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+
+                    Toasty.success(this, " Reset Password mail has been sent successfully ", Toasty.LENGTH_SHORT).show()
+
+                } else {
+                    Toasty.error(this, " an error occurred with sending  reset the email ", Toasty.LENGTH_SHORT).show()
+                }
+            }
     }
 
     override fun onPause() {

@@ -85,7 +85,7 @@
         <item>Andorran</item>
         <item>Angolan</item>
         <item>Anguillan</item>
-        <item>Citizen of Antigua and Barbuda</item>
+        <item>AntiguaandBarbuda</item>
         <item>Argentine</item>
         <item>Armenian</item>
         <item>Australian</item>
@@ -102,11 +102,11 @@
         <item>Bermudian</item>
         <item>Bhutanese</item>
         <item>Bolivian</item>
-        <item>Citizen of Bosnia and Herzegovina</item>
+        <item>BosniaandHerzegovina</item>
         <item>Botswanan</item>
         <item>Brazilian</item>
         <item>British</item>
-        <item>British Virgin Islander</item>
+        <item>BritishVirginIslander</item>
         <item>Bruneian</item>
         <item>Bulgarian</item>
         <item>Burkinan</item>
@@ -136,7 +136,7 @@
         <item>Danish</item>
         <item>Djiboutian</item>
         <item>Dominican</item>
-        <item>Citizen of the Dominican Republic</item>
+        <item>theDominicanRepublic</item>
         <item>Dutch</item>
         <item>East Timorese</item>
         <item>Ecuadorean</item>
@@ -164,7 +164,7 @@
         <item>Grenadian</item>
         <item>Guamanian</item>
         <item>Guatemalan</item>
-        <item>Citizen of Guinea-Bissau</item>
+        <item>Guinea-Bissau</item>
         <item>Guinean</item>
         <item>Guyanese</item>
         <item>Haitian</item>
@@ -186,7 +186,7 @@
         <item>Kazakh</item>
         <item>Kenyan</item>
         <item>Kittitian</item>
-        <item>Citizen of Kiribati</item>
+        <item>Kiribati</item>
         <item>Kosovan</item>
         <item>Kuwaiti</item>
         <item>Kyrgyz</item>
@@ -195,7 +195,7 @@
         <item>Lebanese</item>
         <item>Liberian</item>
         <item>Libyan</item>
-        <item>Liechtenstein citizen</item>
+        <item>Liechtenstein</item>
         <item>Lithuanian</item>
         <item>Luxembourger</item>
         <item>Macanese</item>
@@ -256,7 +256,7 @@
         <item>Scottish</item>
         <item>Senegalese</item>
         <item>Serbian</item>
-        <item>Citizen of Seychelles</item>
+        <item>Seychelles</item>
         <item>Sierra Leonean</item>
         <item>Singaporean</item>
         <item>Slovak</item>
@@ -289,7 +289,6 @@
         <item>Tunisian</item>
         <item>Turkish</item>
         <item>Turkmen</item>
-        <item>Turks and Caicos Islander</item>
         <item>Tuvaluan</item>
         <item>Ugandan</item>
         <item>Ukrainian</item>

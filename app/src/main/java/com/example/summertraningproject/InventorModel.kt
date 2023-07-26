@@ -10,4 +10,14 @@ data class InventorModel  (
     var Job: String? = "None",
     var FirstName : String? = "None",
     var MiddleName: String? = "None",
-    var LastName: String? = "None") : Serializable
+    var LastName: String? = "None",
+    var CNRStartingBalance: String? = "None",
+    var Citizenship: String? = "None",
+    var CourtesyTitle: String? = "None",
+    var CreatedBy: String? = "None",
+    var EmployeeStartDate: String? = "None",
+    var Gender: String? = "None",
+    var ModifiedBy: String? = "None",
+    var Suffix: String? = "None",
+    var PhoneNum: String? = "None",
+    var TotalDistributions: String? = "None") : Serializable

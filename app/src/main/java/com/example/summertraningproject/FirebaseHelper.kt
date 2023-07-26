@@ -20,7 +20,7 @@ import kotlinx.coroutines.withContext
 object FirebaseHelper {
 
     public val databaseInst: FirebaseDatabase = FirebaseDatabase.getInstance()
-    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
+    public val auth: FirebaseAuth = FirebaseAuth.getInstance()
     private val Reference: DatabaseReference = databaseInst.reference
     private lateinit var userRecyclerview : RecyclerView
     private lateinit var inventionsArrayList : ArrayList<InventionModel>
