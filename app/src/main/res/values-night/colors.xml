@@ -19,4 +19,6 @@
 
     <color name="TableRows">#64696A</color>
 
+    <color name="ProgressBar">#00BFFF</color>
+
 </resources>

@@ -76,6 +76,11 @@
         <item>Prof</item>
     </string-array>
 
+    <string-array name="Disclosure_Types">
+        <item>Institutional Fund</item>
+        <item>Online Disclosure</item>
+    </string-array>
+
     <string-array name="Citizenship">
         <item>None</item>
         <item>Afghan</item>

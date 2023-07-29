@@ -28,9 +28,6 @@
 
     <color name="TableRows">#FFFFFF</color>
 
-
-
-
-
+    <color name="ProgressBar">#FFA500</color>
 
 </resources>

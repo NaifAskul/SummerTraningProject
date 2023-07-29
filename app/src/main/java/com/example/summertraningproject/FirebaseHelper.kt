@@ -146,7 +146,7 @@ object FirebaseHelper {
     // Function to insert Inventions data into Firebase in a coroutine-safe way
     suspend fun insertDataInInventions(inventionName: String,status: String,CreateDate: String,context: Context) = withContext(Dispatchers.IO) {
 
-        val reference: DatabaseReference = databaseInst.getReference("Inventions").child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+        val reference: DatabaseReference = databaseInst.getReference("Inventions").child(FirebaseAuth.getInstance().currentUser?.uid.toString()).child(inventionName)
 
         // Generate a new unique key for each invention using push()
         val newInventionRef = reference.push()

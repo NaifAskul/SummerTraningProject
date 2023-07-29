@@ -15,7 +15,6 @@ data class InventorModel  (
     var Citizenship: String? = "None",
     var CourtesyTitle: String? = "None",
     var CreatedBy: String? = "None",
-    var EmployeeStartDate: String? = "None",
     var Gender: String? = "None",
     var ModifiedBy: String? = "None",
     var Suffix: String? = "None",

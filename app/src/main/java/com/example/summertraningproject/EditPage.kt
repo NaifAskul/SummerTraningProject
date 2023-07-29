@@ -145,7 +145,6 @@ class EditPage : AppCompatActivity() {
             val Interests = findViewById<EditText>(R.id.textView66578)
             val PhNum = findViewById<EditText>(R.id.textView456)
             val cnr = findViewById<EditText>(R.id.textView4569)
-            val invSD = findViewById<EditText>(R.id.textView6665)
             val suffix = findViewById<EditText>(R.id.textView11111)
 
             val fname = Fname.text.toString()
@@ -154,7 +153,6 @@ class EditPage : AppCompatActivity() {
             val interests = Interests.text.toString()
             val phNum = PhNum.text.toString()
             val cnR = cnr.text.toString()
-            val invSd = invSD.text.toString()
             val suffiX = suffix.text.toString()
 
 
@@ -169,7 +167,7 @@ class EditPage : AppCompatActivity() {
             }
 
             lifecycleScope.launch(Dispatchers.IO) {
-                updateData(fname, mname, lname, interests, phNum, cnR, invSd, suffiX,ct,citizenShip,gendeR)
+                updateData(fname, mname, lname, interests, phNum, cnR, suffiX,ct,citizenShip,gendeR)
             }
         }
     }
@@ -189,7 +187,6 @@ class EditPage : AppCompatActivity() {
         interests: String,
         phNum: String,
         cnR: String,
-        invSd: String,
         suffiX: String,
         ctt: String,
         cs: String,
@@ -218,9 +215,6 @@ class EditPage : AppCompatActivity() {
             }
             if (cnR.isNotEmpty()) {
                 InvReference.child("CNRStartingBalance").setValue(cnR)
-            }
-            if (invSd.isNotEmpty()) {
-                InvReference.child("EmployeeStartDate").setValue(invSd)
             }
             if (suffiX.isNotEmpty()) {
                 InvReference.child("Suffix").setValue(suffiX)

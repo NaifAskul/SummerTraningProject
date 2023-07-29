@@ -29,6 +29,13 @@ class Home : Fragment() {
             startActivity(intent)
         }
 
+        val Newdisclosure = view.findViewById<ImageButton>(R.id.imageButton)
+
+        Newdisclosure.setOnClickListener {
+            val intent = Intent(getActivity(),NewDisclosure::class.java)
+            startActivity(intent)
+        }
+
 
     }
 }
