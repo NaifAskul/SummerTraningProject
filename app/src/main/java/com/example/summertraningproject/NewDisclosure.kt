@@ -46,6 +46,12 @@ class NewDisclosure : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val Title = findViewById<EditText>(R.id.EditText1)
+        val Description = findViewById<EditText>(R.id.EditText22)
+        val FPD = findViewById<EditText>(R.id.textView6658)
+        val COD = findViewById<EditText>(R.id.EditText)
+        val SK = findViewById<EditText>(R.id.descriptionEditText)
+
         val DisclosureTypes = findViewById<Spinner>(R.id.spinner1)
 
         DisclosureTypes.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -79,27 +85,65 @@ class NewDisclosure : AppCompatActivity() {
             .setCompletedPosition(0)
             .drawView()
 
-        val FPD = findViewById<EditText>(R.id.textView6658)
+
+            val nextStep = findViewById<Button>(R.id.button4)
+
+            nextStep.setOnClickListener {
 
 
-        if(isDateValid(FPD.text.toString())){
+                if (!Title.text.trim().isEmpty()) {
+
+                    if (FPD.text.trim().toString().isEmpty()) {
+
+                        ToResearches()
+
+                    } else if ( !FPD.text.trim().toString().isEmpty() and isDateValid(FPD.text.trim().toString())){
+
+                        ToResearches()
+
+                    }else{
+
+                        Toasty.error(this, " The date is invalid ", Toasty.LENGTH_SHORT).show()
+                    }
+
+                }else{
+                    Toasty.error(this, " Title is empty ", Toasty.LENGTH_SHORT).show()
+                }
+            }
+
+                    val fileB = findViewById<Button>(R.id.button30)
+
+                    fileB.setOnClickListener {
+
+                        if (!Title.text.trim().isEmpty()) {
+                            openFilePicker()
+                        }else{
+                            Toasty.error(this, " Title is empty ", Toasty.LENGTH_SHORT).show()
+                        }
+
+                    }
 
 
-        }else{
+            }
 
 
-        }
+fun ToResearches(){
 
-        val nextStep = findViewById<Button>(R.id.button4)
+    val intent = Intent(this, Researches::class.java)
 
-        nextStep.setOnClickListener {
+    val TitlE = findViewById<EditText>(R.id.EditText1)
 
-            val intent = Intent(this, Researches::class.java)
-            startActivity(intent)
+    val tite = TitlE.text.toString().trim()
 
-        }
+    // Attach the data as an extra to the intent
+    intent.putExtra("Title", tite)
 
-    }
+    startActivity(intent)
+
+}
+
+
+
 
 
 

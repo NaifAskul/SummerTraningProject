@@ -9,9 +9,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -64,7 +61,7 @@ class MainActivity : AppCompatActivity() {
 
             if (Email.isEmpty() or password.isEmpty()) {
 
-                Toasty.error(this, "Email or Password is empty", Toast.LENGTH_SHORT).show()
+                Toasty.error(this, "Email or Password is empty", Toasty.LENGTH_SHORT).show()
             } else {
 
 
