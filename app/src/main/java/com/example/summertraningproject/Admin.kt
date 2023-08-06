@@ -43,19 +43,34 @@ class Admin : AppCompatActivity() {
 
             } else {
 
-                CoroutineScope(Dispatchers.Main).launch {
-                    try {
+                if (isEmailValid(Email)) {
+                    if (password.length >= 6) {
+                        CoroutineScope(Dispatchers.Main).launch {
+                            try {
 
-                        FirebaseHelper.createUserWithEmail(Email, password, this@Admin)
-                        EmailEditText.text.clear()
-                        passwordEditText.text.clear()
+                                FirebaseHelper.createUserWithEmail(Email, password, this@Admin)
+                                EmailEditText.text.clear()
+                                passwordEditText.text.clear()
 
-                    } catch (e: Exception) {
+                            } catch (e: Exception) {
 
+                            }
+                        }
+                    } else {
+                        Toasty.error(
+                            this,
+                            "The password must be at least 6 characters",
+                            Toasty.LENGTH_SHORT
+                        ).show()
                     }
+
+                }else{
+                    Toasty.error(
+                        this,
+                        "The email is invalid",
+                        Toasty.LENGTH_SHORT
+                    ).show()
                 }
-
-
             }
 
         }
@@ -70,5 +85,12 @@ class Admin : AppCompatActivity() {
             img.setImageResource(R.drawable.black)
         }
 
+    }
+
+    fun isEmailValid(email: String): Boolean {
+        // Regular expression to validate email addresses
+        val regex = Regex("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\$")
+
+        return regex.matches(email)
     }
 }

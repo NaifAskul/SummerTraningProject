@@ -21,8 +21,6 @@ import kotlinx.coroutines.withContext
 class OrderStatus : AppCompatActivity() {
 
     private val mainScope = MainScope()
-    private lateinit var userRecyclerview : RecyclerView
-    private lateinit var inventionsArrayList : ArrayList<InventionModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

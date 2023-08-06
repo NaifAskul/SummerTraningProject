@@ -134,30 +134,123 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView1111"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/textView13"
+                            android:layout_width="296dp"
+                            android:layout_height="114dp"
+                            android:layout_marginEnd="16dp"
                             android:fontFamily="@font/raleway_semibold"
-                            android:text="Title*"
+                            android:text="Has the date of conception of invention been documented in a laboratory notebook (or other documents)?*"
                             android:textColor="@color/TextColor"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:layout_editor_absoluteY="350dp" />
 
-                        <EditText
-                            android:id="@+id/EditText1"
+                        <RadioGroup
+                            android:id="@+id/RG1"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/custom_input"
-                            android:fontFamily="@font/raleway_semibold"
-                            android:gravity="start|top"
-                            android:hint="  Enter Title here..."
-                            android:inputType="textMultiLine"
-                            android:minLines="2"
-                            android:scrollbarStyle="insideInset"
-                            android:scrollbars="vertical"
-                            android:textColor="@color/TextColor"
-                            android:textSize="16sp" />
+                            android:layout_height="wrap_content">
 
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="10dp"
+                        android:alpha="0.5"
+                        android:background="#585858" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView12"
+                            android:layout_width="296dp"
+                            android:layout_height="114dp"
+                            android:layout_marginEnd="16dp"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="Did you search for previous disclosures by others of similar inventions (for example did you carry out a search for prior art patents)?*"
+                            android:textColor="@color/TextColor"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:layout_editor_absoluteY="225dp" />
+
+                        <RadioGroup
+                            android:id="@+id/RG2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="10dp"
+                        android:alpha="0.5"
+                        android:background="#585858" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView10"
+                            android:layout_width="296dp"
+                            android:layout_height="114dp"
+                            android:layout_marginEnd="16dp"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="Have you made a prototype of your invention or practiced your invention?*"
+                            android:textColor="@color/TextColor"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:layout_editor_absoluteY="114dp" />
+                        <RadioGroup
+                            android:id="@+id/RG3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No" />
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
@@ -172,223 +265,45 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView555"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:id="@+id/textView2"
+                            android:layout_width="296dp"
+                            android:layout_height="114dp"
+                            android:layout_marginEnd="16dp"
                             android:fontFamily="@font/raleway_semibold"
-                            android:text="Disclosure Types*"
+                            android:text="Were there any prior public disclosure(s) or are there any anticipated disclosure(s), either written or oral, of the Invention?*"
                             android:textColor="@color/TextColor"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:layout_editor_absoluteY="0dp" />
 
-                        <Spinner
-                            android:id="@+id/spinner1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:entries="@array/Disclosure_Types"
-                            android:inputType="none"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                        <RadioGroup
+                            android:id="@+id/RG4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Yes" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No" />
+
+                        </RadioGroup>
 
                     </LinearLayout>
+
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView1"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="23dp"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="11dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView4"
-                app:layout_constraintVertical_bias="0.659">
-
-                <LinearLayout
-                    android:id="@+id/linearLayout10"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="60dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="50dp"
-                    android:background="@android:color/transparent"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/raleway_semibold"
-                            android:text="Description"
-                            android:textColor="@color/TextColor"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <!-- Add the big EditText for description -->
-                        <EditText
-                            android:id="@+id/EditText22"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/custom_input"
-                            android:fontFamily="@font/raleway_semibold"
-                            android:gravity="start|top"
-                            android:hint="  Enter description here..."
-                            android:inputType="textMultiLine"
-                            android:minLines="6"
-                            android:scrollbarStyle="insideInset"
-                            android:scrollbars="vertical"
-                            android:textColor="@color/TextColor"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:alpha="0.5"
-                        android:background="@color/TextColor" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView777"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/raleway_semibold"
-                            android:text="First Public Disclosure"
-                            android:textColor="@color/TextColor"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/textView6658"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/custom_input"
-                            android:fontFamily="@font/raleway_semibold"
-                            android:gravity="start|top"
-                            android:hint="  dd-mm-yyyy"
-                            android:inputType="textMultiLine"
-                            android:minLines="2"
-                            android:scrollbarStyle="insideInset"
-                            android:scrollbars="vertical"
-                            android:textColor="@color/TextColor"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:alpha="0.5"
-                        android:background="@color/TextColor" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView222"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/raleway_semibold"
-                            android:text="Circumstances of Disclosure"
-                            android:textColor="@color/TextColor"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <!-- Add the big EditText for description -->
-                        <EditText
-                            android:id="@+id/EditText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/custom_input"
-                            android:fontFamily="@font/raleway_semibold"
-                            android:gravity="start|top"
-                            android:hint="  Enter the circumstances here..."
-                            android:inputType="textMultiLine"
-                            android:minLines="6"
-                            android:scrollbarStyle="insideInset"
-                            android:scrollbars="vertical"
-                            android:textColor="@color/TextColor"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:alpha="0.5"
-                        android:background="@color/TextColor" />
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView11"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/raleway_semibold"
-                            android:text="Suggested Keywords"
-                            android:textColor="@color/TextColor"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <!-- Add the big EditText for description -->
-                        <EditText
-                            android:id="@+id/descriptionEditText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/custom_input"
-                            android:fontFamily="@font/raleway_semibold"
-                            android:gravity="start|top"
-                            android:hint="  Enter suggested keywords here..."
-                            android:inputType="textMultiLine"
-                            android:minLines="3"
-                            android:scrollbarStyle="insideInset"
-                            android:scrollbars="vertical"
-                            android:textColor="@color/TextColor"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
@@ -503,3 +418,4 @@
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
+

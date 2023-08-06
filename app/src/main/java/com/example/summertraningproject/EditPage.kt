@@ -161,7 +161,7 @@ class EditPage : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            if (!phNum.isEmpty() && !isValidPhoneNumber(phNum)) {
+            if (phNum.isNotEmpty() and  !isPhoneNumberValid(phNum) ) {
                 Toasty.error(this, "Phone Number is not valid", Toasty.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -172,12 +172,6 @@ class EditPage : AppCompatActivity() {
         }
     }
 
-
-    private fun isValidPhoneNumber(phoneNumber: String): Boolean {
-        // Regular expression to match a ten-digit phone number starting with zero
-        val regex = Regex("""^0\d{9}$""")
-        return phoneNumber.matches(regex)
-    }
 
 
     private suspend fun updateData(
@@ -211,10 +205,23 @@ class EditPage : AppCompatActivity() {
                 InvReference.child("intersts").setValue(interests)
             }
             if (phNum.isNotEmpty()) {
-                InvReference.child("PhoneNum").setValue(phNum)
+
+                if(isPhoneNumberValid(phNum)) {
+
+                    InvReference.child("PhoneNum").setValue(phNum)
+
+                }else{
+
+                    Toasty.error(this@EditPage, "Phone number is invalid", Toasty.LENGTH_SHORT).show()
+
+                }
             }
             if (cnR.isNotEmpty()) {
-                InvReference.child("CNRStartingBalance").setValue(cnR)
+                if (isNumeric(cnR)) {
+                    InvReference.child("CNRStartingBalance").setValue(cnR)
+                }else{
+                    Toasty.error(this@EditPage, "User not found", Toasty.LENGTH_SHORT).show()
+                }
             }
             if (suffiX.isNotEmpty()) {
                 InvReference.child("Suffix").setValue(suffiX)
@@ -244,9 +251,15 @@ class EditPage : AppCompatActivity() {
         }
     }
 
+    fun isPhoneNumberValid(phoneNumber: String): Boolean {
+        val regex = Regex("^05\\d{8}$")
+        return regex.matches(phoneNumber)
+    }
 
 
-
+    fun isNumeric(input: String): Boolean {
+        return input.matches("\\d+(\\.\\d+)?".toRegex())
+    }
 
 
     private fun ResetPassword(email: String) {

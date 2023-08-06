@@ -7,25 +7,36 @@
     android:id="@+id/adminLayout"
     android:background="@color/Background">
 
-    <EditText
-        android:id="@+id/emailEditText"
-        android:layout_width="285dp"
-        android:layout_height="51dp"
-        android:background="@drawable/custom_input"
-        android:drawableStart="@drawable/outline_supervised_user_circle_24"
-        android:ems="10"
-        android:fontFamily="@font/raleway_semibold"
-        android:hint="Enter an E-mail"
-        android:inputType="textPersonName"
-        android:textColor="@color/TextColor"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/TextColor"
         android:textColorHint="@color/TextColor"
-        android:textSize="24sp"
+        app:hintTextColor="@color/TextColor"
+        app:hintTextAppearance="@style/TextLabel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.383" />
+        app:layout_constraintVertical_bias="0.383">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailEditText"
+            android:layout_width="285dp"
+            android:layout_height="68dp"
+            android:drawableStart="@drawable/outline_supervised_user_circle_24"
+            android:ems="10"
+            android:fontFamily="@font/raleway_semibold"
+            android:hint="Enter your E-mail"
+            android:inputType="textPersonName"
+            android:textColor="@color/TextColor"
+            android:textSize="19sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/button2"
@@ -45,25 +56,34 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.633" />
 
-    <EditText
-        android:id="@+id/PasswordEditText"
-        android:layout_width="286dp"
-        android:layout_height="48dp"
-        android:background="@drawable/custom_input"
-        android:drawableStart="@drawable/outline_lock_24"
-        android:ems="10"
-        android:fontFamily="@font/raleway_semibold"
-        android:hint="Enter a password"
-        android:inputType="textPassword"
-        android:textColor="@color/TextColor"
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/TextColor"
         android:textColorHint="@color/TextColor"
-        android:textSize="24sp"
+        app:hintTextColor="@color/TextColor"
+        app:hintTextAppearance="@style/TextLabel"
+        app:endIconTint="@color/TextColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.352"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/PasswordEditText"
+            android:layout_width="286dp"
+            android:layout_height="68dp"
+            android:drawableStart="@drawable/outline_lock_24"
+            android:ems="10"
+            android:fontFamily="@font/raleway_semibold"
+            android:hint="Enter password"
+            android:textColor="@color/TextColor"
+            android:textSize="19sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <ImageView
         android:id="@+id/imageView"

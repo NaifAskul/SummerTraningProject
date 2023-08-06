@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MyAdapter(private val inventionsList : ArrayList<InventionModel>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class MyAdapter(private val inventionsList : ArrayList<InventionModel> , private val onItemClickListener: (InventionModel) -> Unit) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -26,6 +26,10 @@ class MyAdapter(private val inventionsList : ArrayList<InventionModel>) : Recycl
         holder.inventionName.text = currentitem.inventionName
         holder.status.text = currentitem.status
 
+        holder.itemView.setOnClickListener {
+            onItemClickListener.invoke(currentitem)
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -38,7 +42,7 @@ class MyAdapter(private val inventionsList : ArrayList<InventionModel>) : Recycl
 
         val createDate : TextView = itemView.findViewById(R.id.cdate)
         val inventionName : TextView = itemView.findViewById(R.id.invname)
-        val  No: TextView = itemView.findViewById(R.id.no)
+        val No: TextView = itemView.findViewById(R.id.no)
         val status : TextView = itemView.findViewById(R.id.statuss)
 
     }

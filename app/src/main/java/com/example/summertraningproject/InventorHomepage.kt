@@ -31,14 +31,22 @@ class InventorHomepage : AppCompatActivity() {
 
 
 
+
         val back = findViewById<Button>(R.id.button1)
 
         back.setOnClickListener {
             val intent = Intent(this,MainPage::class.java)
             startActivity(intent)
         }
-    }
 
+        val ND = findViewById<TextView>(R.id.textView8)
+
+        ND.setOnClickListener {
+            val intent = Intent(this,NewDisclosure::class.java)
+            startActivity(intent)
+        }
+
+    }
 
     suspend fun getInventorData(context: Context) {
         try {

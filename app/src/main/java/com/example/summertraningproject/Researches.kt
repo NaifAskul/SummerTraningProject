@@ -11,15 +11,19 @@ import com.anton46.stepsview.StepsView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import es.dmoral.toasty.Toasty
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlin.properties.Delegates
 
 class Researches : AppCompatActivity() {
 
-    val arr = arrayOf("Details", "Researchers", "Funding", "Questions", "Confirm")
-    private val auth = FirebaseAuth.getInstance()
+    val arr = arrayOf("Details", "Researchers", "Funding", "Questions","Survey", "Confirm")
     private val membersList: MutableList<Member> = mutableListOf()
     private lateinit var memberAdapter: MemberAdapter
-
+    private lateinit var receivedData: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,19 +40,21 @@ class Researches : AppCompatActivity() {
 
         val back = findViewById<Button>(R.id.button1)
 
+
+        // Get the data passed from the SenderActivity
+        receivedData = intent.getStringExtra("Title").toString()
+
         back.setOnClickListener {
 
-            // Reference to the location you want to delete
-            val referenceToDelete = FirebaseHelper.databaseInst.getReference("Inventions")
-
-            // Get the data passed from the SenderActivity
-            val receivedData = intent.getStringExtra("Title")
-
-            // Delete the data
-            referenceToDelete.child(FirebaseAuth.getInstance().currentUser?.uid.toString()).child(receivedData.toString()).child("members").removeValue()
-
-            val intent = Intent(this, NewDisclosure::class.java)
-            startActivity(intent)
+            CoroutineScope(Dispatchers.Main).launch {
+                val isSuccess = deleteMembersFromFirebase(receivedData)
+                if (isSuccess) {
+                    val intent = Intent(this@Researches, NewDisclosure::class.java)
+                    startActivity(intent)
+                } else {
+                    Toasty.error(this@Researches, "Failed to delete members", Toasty.LENGTH_SHORT).show()
+                }
+            }
 
         }
 
@@ -57,7 +63,8 @@ class Researches : AppCompatActivity() {
 
         nextStep.setOnClickListener {
 
-            val intent = Intent(this, Researches::class.java)
+            val intent = Intent(this, Funding::class.java)
+            intent.putExtra("Title",receivedData)
             startActivity(intent)
 
         }
@@ -81,44 +88,95 @@ class Researches : AppCompatActivity() {
             var organizationEditText: EditText = findViewById(R.id.textView45602)
             var emailAddressEditText: EditText = findViewById(R.id.textView4560)
 
-            // Get the user input from the EditText fields
             val firstName = firstNameEditText.text.toString().trim()
             val middleName = middleNameEditText.text.toString().trim()
             val lastName = lastNameEditText.text.toString().trim()
             val organization = organizationEditText.text.toString().trim()
             val emailAddress = emailAddressEditText.text.toString().trim()
 
-            // Create a new Member object using the input
-            val newMember = Member(
-                false, "0.00", "$firstName $middleName $lastName", organization, emailAddress
-            )
-
-            val membersRef = FirebaseHelper.databaseInst.getReference("Inventions")
-
-            // Get the data passed from the SenderActivity
-            val receivedData = intent.getStringExtra("Title")
-
-            val newMemberRef =
-                membersRef.child(FirebaseAuth.getInstance().currentUser?.uid.toString()).child(
-                    receivedData.toString()
-                ).child("members").push()
-
-
-            newMemberRef.setValue(newMember)
-
-
-            // Add the new member to the list
-            membersList.add(newMember)
-
-            // Notify the adapter about the data change
-            memberAdapter.notifyDataSetChanged()
+            CoroutineScope(Dispatchers.Main).launch {
+                if (validateInput(firstName, lastName, emailAddress)) {
+                    addMemberToFirebase(
+                        firstName,
+                        middleName,
+                        lastName,
+                        organization,
+                        emailAddress,
+                        receivedData
+                    )
+                }
+            }
 
         }
 
     }
 
+    private suspend fun deleteMembersFromFirebase(receivedData: String): Boolean = withContext(Dispatchers.IO) {
+        try {
+            val referenceToDelete = FirebaseHelper.databaseInst.getReference("Inventions")
+            referenceToDelete.child(FirebaseAuth.getInstance().currentUser?.uid.toString()).child(receivedData).child("members").removeValue()
+            return@withContext true
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return@withContext false
+        }
+    }
 
-    fun isEmailValid(email: String): Boolean {
+    private suspend fun addMemberToFirebase(
+        firstName: String,
+        middleName: String,
+        lastName: String,
+        organization: String,
+        emailAddress: String,
+        receivedData: String
+    ) = withContext(Dispatchers.IO) {
+        try {
+            if (isEmailValid(emailAddress)) {
+
+                val newMember = Member("","","",false, "0.00", "$firstName $middleName $lastName", organization, emailAddress)
+                val membersRef = FirebaseHelper.databaseInst.getReference("Inventions")
+                val newMemberRef = membersRef.child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+                    .child(receivedData).child("members").push()
+
+                newMember.memberId = newMemberRef.key.toString()
+                newMember.InvOwner = FirebaseAuth.getInstance().currentUser?.uid.toString()
+                newMember.InvName = receivedData
+
+                newMemberRef.setValue(newMember)
+
+
+                // Add the new member to the list
+                membersList.add(newMember)
+
+                // Switch to the main thread and notify the adapter about the data change
+                withContext(Dispatchers.Main) {
+                    memberAdapter.notifyDataSetChanged()
+                }
+
+            } else {
+                withContext(Dispatchers.Main) {
+                    Toasty.error(this@Researches, "Email is Invalid", Toasty.LENGTH_SHORT).show()
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private suspend fun validateInput(firstName: String, lastName: String, emailAddress: String): Boolean =
+        withContext(Dispatchers.Default) {
+            if (firstName.isEmpty() || lastName.isEmpty() || emailAddress.isEmpty()) {
+                withContext(Dispatchers.Main) {
+                    Toasty.error(this@Researches, "First name, Last name, or Email is empty", Toasty.LENGTH_SHORT).show()
+                }
+                return@withContext false
+            }
+            return@withContext true
+        }
+
+
+
+fun isEmailValid(email: String): Boolean {
         val emailRegex = Regex("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")
         return email.matches(emailRegex)
     }

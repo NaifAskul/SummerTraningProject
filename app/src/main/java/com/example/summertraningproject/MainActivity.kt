@@ -44,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
         val img = findViewById<ImageView>(R.id.imageView)
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
@@ -57,27 +56,45 @@ class MainActivity : AppCompatActivity() {
 
         Login.setOnClickListener {
             val Email = EmailEditText.text.toString().trim()
-            val password = passwordEditText.text.toString()
+            val password = passwordEditText.text.toString().trim()
 
             if (Email.isEmpty() or password.isEmpty()) {
 
                 Toasty.error(this, "Email or Password is empty", Toasty.LENGTH_SHORT).show()
             } else {
 
+                if (isEmailValid(Email)) {
+                    if (password.length >= 6) {
+                        CoroutineScope(Dispatchers.Main).launch {
+                            try {
 
-                CoroutineScope(Dispatchers.Main).launch {
-                    try {
+                                FirebaseHelper.signInWithEmail(Email, password, this@MainActivity)
 
-                        FirebaseHelper.signInWithEmail(Email, password,this@MainActivity)
+                            } catch (e: Exception) {
 
-                    }catch (e: Exception){
+                            }
+                        }
+                    } else {
+
+                        Toasty.error(
+                            this,
+                            "The password must be at least 6 characters",
+                            Toasty.LENGTH_SHORT
+                        ).show()
 
                     }
+
+                }else{
+
+                    Toasty.error(
+                        this,
+                        "The email is invalid",
+                        Toasty.LENGTH_SHORT
+                    ).show()
+
                 }
 
             }
-
-
         }
 
 
@@ -89,12 +106,27 @@ class MainActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
 
-                    Toasty.success(this, " Reset Password mail has been sent successfully ", Toasty.LENGTH_SHORT).show()
+                    Toasty.success(
+                        this,
+                        " Reset Password mail has been sent successfully ",
+                        Toasty.LENGTH_SHORT
+                    ).show()
 
                 } else {
-                    Toasty.error(this, " an error occurred with sending  reset the email ", Toasty.LENGTH_SHORT).show()
+                    Toasty.error(
+                        this,
+                        " an error occurred with sending  reset the email ",
+                        Toasty.LENGTH_SHORT
+                    ).show()
                 }
             }
+    }
+
+    fun isEmailValid(email: String): Boolean {
+        // Regular expression to validate email addresses
+        val regex = Regex("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}\$")
+
+        return regex.matches(email)
     }
 
     override fun onPause() {

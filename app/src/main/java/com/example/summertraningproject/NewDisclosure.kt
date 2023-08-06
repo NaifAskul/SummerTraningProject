@@ -11,6 +11,7 @@ import android.widget.AdapterView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import com.anton46.stepsview.StepsView
@@ -21,6 +22,8 @@ import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
@@ -28,11 +31,12 @@ import java.util.UUID
 
 class NewDisclosure : AppCompatActivity() {
 
-    val arr = arrayOf("Details", "Researchers", "Funding", "Questions", "Confirm")
+    val arr = arrayOf("Details", "Researchers", "Funding", "Questions","Survey", "Confirm")
     private val storageRef = FirebaseStorage.getInstance().reference
     private val databaseRef = FirebaseDatabase.getInstance().reference
     private val auth = FirebaseAuth.getInstance()
     private lateinit var DT: String
+    private lateinit var filename: String
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,16 +45,31 @@ class NewDisclosure : AppCompatActivity() {
 
         val back = findViewById<Button>(R.id.button1)
 
-        back.setOnClickListener {
-            val intent = Intent(this,MainPage::class.java)
-            startActivity(intent)
-        }
+        var Title = findViewById<EditText>(R.id.EditText1)
+        var Description = findViewById<EditText>(R.id.EditText22)
+        var FPD = findViewById<EditText>(R.id.textView6658)
+        var COD = findViewById<EditText>(R.id.EditText)
+        var SK = findViewById<EditText>(R.id.descriptionEditText)
+        filename = "None"
 
-        val Title = findViewById<EditText>(R.id.EditText1)
-        val Description = findViewById<EditText>(R.id.EditText22)
-        val FPD = findViewById<EditText>(R.id.textView6658)
-        val COD = findViewById<EditText>(R.id.EditText)
-        val SK = findViewById<EditText>(R.id.descriptionEditText)
+
+
+
+        back.setOnClickListener {
+
+            CoroutineScope(Dispatchers.Main).launch {
+                withContext(Dispatchers.IO) {
+                    // Your existing code goes here
+
+                    val referenceToDelete = FirebaseHelper.databaseInst.getReference("Inventions")
+                    referenceToDelete.child(FirebaseAuth.getInstance().currentUser?.uid.toString()).removeValue()
+
+                    val intent = Intent(this@NewDisclosure, MainPage::class.java)
+                    startActivity(intent)
+                }
+            }
+
+        }
 
         val DisclosureTypes = findViewById<Spinner>(R.id.spinner1)
 
@@ -86,66 +105,109 @@ class NewDisclosure : AppCompatActivity() {
             .drawView()
 
 
-            val nextStep = findViewById<Button>(R.id.button4)
+        val nextStep = findViewById<Button>(R.id.button4)
 
-            nextStep.setOnClickListener {
+        nextStep.setOnClickListener {
+
+            val T = Title.text.toString().trim()
+            val DES = Description.text.toString()
+            val FPDATE = FPD.text.toString().trim()
+            val Circ = COD.text.toString()
+            val keywords = SK.text.toString().trim()
+
+            if (T.isNotEmpty() and  DT.isNotEmpty()) {
+
+                if (FPDATE.isEmpty()) {
 
 
-                if (!Title.text.trim().isEmpty()) {
+                    ToResearches(T,DES,FPDATE,Circ,keywords)
 
-                    if (FPD.text.trim().toString().isEmpty()) {
 
-                        ToResearches()
+                } else if (FPDATE.isNotEmpty() and isDateValid(FPDATE)) {
 
-                    } else if ( !FPD.text.trim().toString().isEmpty() and isDateValid(FPD.text.trim().toString())){
 
-                        ToResearches()
+                    ToResearches(T,DES,FPDATE,Circ,keywords)
 
-                    }else{
+                } else {
 
-                        Toasty.error(this, " The date is invalid ", Toasty.LENGTH_SHORT).show()
+                    Toasty.error(this, " The date is invalid ", Toasty.LENGTH_SHORT).show()
+                }
+            }else {
+                Toasty.error(this, " Title or Disclosure Types is empty", Toasty.LENGTH_SHORT).show()
+            }
+
+        }
+
+        val fileB = findViewById<Button>(R.id.button30)
+
+        fileB.setOnClickListener {
+
+            val T = Title.text.toString().trim()
+
+            if (T.isNotEmpty()) {
+                openFilePicker()
+            } else {
+                Toasty.error(this, " Title is empty ", Toasty.LENGTH_SHORT).show()
+            }
+
+        }
+
+
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun ToResearches(invName: String, DES: String, FPDATE: String, Circ: String, keywords: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                FirebaseHelper.insertDataInInventions(
+                    invName, "Received",
+                    LocalDate.now().toString(), this@NewDisclosure
+                )
+
+
+                val userId = FirebaseAuth.getInstance().currentUser?.uid
+                if (userId != null) {
+                    val InvReference =
+                        FirebaseHelper.databaseInst.getReference("Inventions").child(userId).child(invName)
+
+                    // Update the fields that are not empty
+                    InvReference.child("type").setValue(DT)
+
+                    if (DES.isNotEmpty()) {
+                        InvReference.child("description").setValue(DES)
+                    }
+                    if (FPDATE.isNotEmpty()) {
+                        InvReference.child("first_Public_Disclosure").setValue(FPDATE)
+                    }
+                    if (Circ.isNotEmpty()) {
+                        InvReference.child("circumstances_of_Disclosure").setValue(Circ)
+                    }
+                    if (keywords.isNotEmpty()) {
+                        InvReference.child("keywords").setValue(keywords)
                     }
 
-                }else{
-                    Toasty.error(this, " Title is empty ", Toasty.LENGTH_SHORT).show()
+                    if(filename.isNotEmpty()){
+
+                        InvReference.child("fileNameD").setValue(filename)
+
+                    }
+
+                }
+
+                val intent = Intent(this@NewDisclosure, Researches::class.java)
+                val tite = findViewById<EditText>(R.id.EditText1).text.toString().trim()
+                intent.putExtra("Title", tite)
+                startActivity(intent)
+
+            } catch (e: Exception) {
+
+                runOnUiThread {
+                    Toasty.error(this@NewDisclosure, e.toString(), Toasty.LENGTH_LONG).show()
                 }
             }
-
-                    val fileB = findViewById<Button>(R.id.button30)
-
-                    fileB.setOnClickListener {
-
-                        if (!Title.text.trim().isEmpty()) {
-                            openFilePicker()
-                        }else{
-                            Toasty.error(this, " Title is empty ", Toasty.LENGTH_SHORT).show()
-                        }
-
-                    }
-
-
-            }
-
-
-fun ToResearches(){
-
-    val intent = Intent(this, Researches::class.java)
-
-    val TitlE = findViewById<EditText>(R.id.EditText1)
-
-    val tite = TitlE.text.toString().trim()
-
-    // Attach the data as an extra to the intent
-    intent.putExtra("Title", tite)
-
-    startActivity(intent)
-
-}
-
-
-
-
-
+        }
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun isDateValid(inputDate: String): Boolean {
@@ -183,29 +245,46 @@ fun ToResearches(){
         filePickerLauncher.launch(Intent.createChooser(intent, "Select File"))
     }
 
+    // Replace your existing uploadFileToFirebaseStorage function with the following:
     private fun uploadFileToFirebaseStorage(fileUri: Uri) {
-        val userId = auth.currentUser?.uid ?: return
-        val fileName = getFileName(fileUri)
-        val fileId = UUID.randomUUID().toString()
-        val fileRef = storageRef.child("files/$userId/$fileId")
-        val invName = findViewById<EditText>(R.id.EditText1)
 
-        fileRef.putFile(fileUri)
-            .addOnSuccessListener {
-                fileRef.downloadUrl.addOnSuccessListener { downloadUri ->
-                    saveFileDataToFirebaseDatabase(fileName, fileId, downloadUri.toString(), invName.text.toString())
+        val invName = findViewById<EditText>(R.id.EditText1).text.toString()
+
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val userId = auth.currentUser?.uid ?: return@launch
+                val fileName = getFileName(fileUri)
+                val fileId = UUID.randomUUID().toString()
+                val fileRef = storageRef.child("files/$userId/$fileId")
+
+                val attachedDoc = findViewById<TextView>(R.id.textView7)
+
+                if (fileName.isNotEmpty()) {
+
+                    filename = fileName
+
+                    attachedDoc.setText("$fileName")
+
                 }
-            }
-            .addOnFailureListener { e ->
-                Toasty.error(this, "Upload failed: ${e.message}", Toasty.LENGTH_SHORT).show()
-            }
-    }
 
+
+
+
+                val taskSnapshot = fileRef.putFile(fileUri).await()
+                val downloadUri = taskSnapshot.storage.downloadUrl.await().toString()
+
+                saveFileDataToFirebaseDatabase(fileName, fileId, downloadUri, invName)
+            } catch (e: Exception) {
+                // Handle exception, if any
+            }
+        }
+    }
 
     private fun getFileName(fileUri: Uri): String {
         contentResolver.query(fileUri, null, null, null, null)?.use {
             if (it.moveToFirst()) {
-                val displayName = it.getString(it.getColumnIndex(MediaStore.Files.FileColumns.DISPLAY_NAME))
+                val displayName =
+                    it.getString(it.getColumnIndex(MediaStore.Files.FileColumns.DISPLAY_NAME))
                 if (displayName != null) {
                     return displayName
                 }
@@ -214,7 +293,12 @@ fun ToResearches(){
         return UUID.randomUUID().toString()
     }
 
-    private fun saveFileDataToFirebaseDatabase(fileName: String, fileId: String, downloadUrl: String,InventionName :String) {
+    private fun saveFileDataToFirebaseDatabase(
+        fileName: String,
+        fileId: String,
+        downloadUrl: String,
+        InventionName: String
+    ) {
         val userId = auth.currentUser?.uid ?: return
         val fileData = mapOf(
             "fileName" to fileName,
@@ -223,13 +307,34 @@ fun ToResearches(){
         )
 
         // Assuming you have a "files" node in the Firebase Realtime Database
-        databaseRef.child("Inventions").child(userId).child(InventionName).child("Files").push().setValue(fileData)
-            .addOnSuccessListener {
-                Toasty.success(this, "File uploaded successfully", Toasty.LENGTH_SHORT).show()
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                databaseRef.child("Inventions").child(userId).child(InventionName).child("Details")
+                    .child("Files").push().setValue(fileData)
+                    .addOnSuccessListener {
+                        // Use runOnUiThread to show Toast on the UI thread
+                        runOnUiThread {
+                            Toasty.success(
+                                this@NewDisclosure,
+                                "File uploaded successfully",
+                                Toasty.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                    .addOnFailureListener { e ->
+                        // Use runOnUiThread to show Toast on the UI thread
+                        runOnUiThread {
+                            Toasty.error(
+                                this@NewDisclosure,
+                                "Failed to save file data: ${e.message}",
+                                Toasty.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+            } catch (e: Exception) {
+                // Handle exception, if any
             }
-            .addOnFailureListener { e ->
-                Toasty.error(this, "Failed to save file data: ${e.message}", Toasty.LENGTH_SHORT).show()
-            }
+        }
     }
 
 }
