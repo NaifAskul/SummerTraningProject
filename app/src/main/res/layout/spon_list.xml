@@ -34,12 +34,42 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/textView123.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/raleway_semibold"
+                    android:text="Sponsor Name"
+                    android:textColor="@color/TextColor"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/T5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/raleway_semibold"
+                    android:text="None"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/TextColor"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
                     android:id="@+id/textView123.1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/raleway_semibold"
-                    android:text="File Name"
+                    android:text="Sponsor Country"
                     android:textColor="@color/TextColor"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -70,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/raleway_semibold"
-                    android:text="File ID"
+                    android:text="Contract Number"
                     android:textColor="@color/TextColor"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -100,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/raleway_semibold"
-                    android:text="File download URL"
+                    android:text="Contact_Information"
                     android:textColor="@color/TextColor"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -120,11 +150,7 @@
             </LinearLayout>
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="vertical"/>
+
 
 
             <androidx.appcompat.widget.AppCompatImageView

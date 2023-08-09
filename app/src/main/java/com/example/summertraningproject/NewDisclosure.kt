@@ -31,11 +31,12 @@ import java.util.UUID
 
 class NewDisclosure : AppCompatActivity() {
 
-    val arr = arrayOf("Details", "Researchers", "Funding", "Questions","Survey", "Confirm")
+    val arr = arrayOf("Details", "Researchers", "Funding", "Questions", "Confirm")
     private val storageRef = FirebaseStorage.getInstance().reference
     private val databaseRef = FirebaseDatabase.getInstance().reference
     private val auth = FirebaseAuth.getInstance()
     private lateinit var DT: String
+    private lateinit var TT: String
     private lateinit var filename: String
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -61,8 +62,10 @@ class NewDisclosure : AppCompatActivity() {
                 withContext(Dispatchers.IO) {
                     // Your existing code goes here
 
+                    if (TT.isNotEmpty()){
                     val referenceToDelete = FirebaseHelper.databaseInst.getReference("Inventions")
-                    referenceToDelete.child(FirebaseAuth.getInstance().currentUser?.uid.toString()).removeValue()
+                    referenceToDelete.child(FirebaseAuth.getInstance().currentUser?.uid.toString()).child(TT).removeValue()
+                    }
 
                     val intent = Intent(this@NewDisclosure, MainPage::class.java)
                     startActivity(intent)
@@ -116,6 +119,8 @@ class NewDisclosure : AppCompatActivity() {
             val keywords = SK.text.toString().trim()
 
             if (T.isNotEmpty() and  DT.isNotEmpty()) {
+
+                TT=T
 
                 if (FPDATE.isEmpty()) {
 
@@ -255,15 +260,24 @@ class NewDisclosure : AppCompatActivity() {
                 val userId = auth.currentUser?.uid ?: return@launch
                 val fileName = getFileName(fileUri)
                 val fileId = UUID.randomUUID().toString()
-                val fileRef = storageRef.child("files/$userId/$fileId")
+                val fileRef = storageRef.child("files/$userId/D/$fileId")
 
-                val attachedDoc = findViewById<TextView>(R.id.textView7)
+                val attachedDoc = findViewById<TextView>(R.id.dummyTextView)
 
                 if (fileName.isNotEmpty()) {
 
                     filename = fileName
 
                     attachedDoc.setText("$fileName")
+
+                    val userId = FirebaseAuth.getInstance().currentUser?.uid
+                    if (userId != null) {
+                        val InvReference =
+                            FirebaseHelper.databaseInst.getReference("Inventions").child(userId)
+                                .child(invName)
+                        InvReference.child("fileNameD").setValue(filename)
+
+                    }
 
                 }
 

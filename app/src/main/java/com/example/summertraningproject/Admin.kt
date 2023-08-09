@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -30,6 +32,7 @@ class Admin : AppCompatActivity() {
         passwordEditText = findViewById(R.id.PasswordEditText)
 
         val register = findViewById<Button>(R.id.button2)
+        val radioGroup1 = findViewById<RadioGroup>(R.id.RG11)
 
 
         register.setOnClickListener {
@@ -47,10 +50,29 @@ class Admin : AppCompatActivity() {
                     if (password.length >= 6) {
                         CoroutineScope(Dispatchers.Main).launch {
                             try {
+                                var UserType = getSelectedRadioButtonText(radioGroup1)
 
-                                FirebaseHelper.createUserWithEmail(Email, password, this@Admin)
-                                EmailEditText.text.clear()
-                                passwordEditText.text.clear()
+                                if(UserType != null) {
+                                    FirebaseHelper.createUserWithEmail(
+                                        Email,
+                                        password,
+                                        UserType,
+                                        this@Admin
+                                    )
+
+                                    EmailEditText.text.clear()
+                                    passwordEditText.text.clear()
+
+                                }else {
+
+                                    Toasty.error(
+                                        this@Admin,
+                                        " Email or Password is invalid ",
+                                        Toasty.LENGTH_SHORT
+                                    )
+                                        .show()
+                                }
+
 
                             } catch (e: Exception) {
 
@@ -64,7 +86,7 @@ class Admin : AppCompatActivity() {
                         ).show()
                     }
 
-                }else{
+                } else {
                     Toasty.error(
                         this,
                         "The email is invalid",
@@ -85,6 +107,15 @@ class Admin : AppCompatActivity() {
             img.setImageResource(R.drawable.black)
         }
 
+    }
+
+    private fun getSelectedRadioButtonText(radioGroup: RadioGroup): String? {
+        val selectedRadioButtonId = radioGroup.checkedRadioButtonId
+        if (selectedRadioButtonId != -1) {
+            val selectedRadioButton = findViewById<RadioButton>(selectedRadioButtonId)
+            return selectedRadioButton.text.toString()
+        }
+        return null
     }
 
     fun isEmailValid(email: String): Boolean {

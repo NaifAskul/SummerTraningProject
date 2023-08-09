@@ -36,7 +36,14 @@ object FirebaseHelper {
 
                     } else {
 
-                        startMainPageActivity(context)
+                        val userId = FirebaseAuth.getInstance().currentUser?.uid
+                        if (userId != null) {
+                            val InvReference =
+                                FirebaseHelper.databaseInst.getReference("Inventors").child(userId).get()
+
+
+                            startMainPageActivity(context)
+                        }
                     }
 
                 } else {
@@ -59,7 +66,7 @@ object FirebaseHelper {
         context.startActivity(intent)
     }
 
-    suspend fun createUserWithEmail(Email: String, password: String, context: Context) =
+    suspend fun createUserWithEmail(Email: String, password: String,Utype: String, context: Context) =
         withContext(Dispatchers.IO) {
 
             auth.createUserWithEmailAndPassword(Email, password).addOnCompleteListener {
@@ -73,6 +80,8 @@ object FirebaseHelper {
 
                     Reference.child("Inventors").child(invetorID.toString()).setValue(inventors)
                         .addOnCompleteListener {
+
+                            Reference.child("Inventors").child(invetorID.toString()).child("userType").setValue(Utype)
 
                             Toasty.success(
                                 context,
@@ -139,7 +148,10 @@ object FirebaseHelper {
                     } else {
                         val inv = inventionSnapshot.getValue(InventionModel::class.java)
                         inv?.let {
-                            tempList.add(it)
+                            if(it.status != "Received") {
+                                tempList.add(it)
+                            }
+
                         }
                     }
                 }
@@ -150,13 +162,89 @@ object FirebaseHelper {
 
                 val adapter = MyAdapter(inventionsArrayList) { item ->
                     // Handle item click here
-                    val intent = Intent(context, InventionDetailsActivity::class.java)
-                    intent.putExtra("invention", item)
-                    context.startActivity(intent)
+                    val intent1 = Intent(context, InventionDetailsActivity::class.java)
+                    intent1.putExtra("invention", item)
+                    context.startActivity(intent1)
+
                 }
+
+
 
                 userRecyclerview.adapter = adapter
 
+
+            } else {
+                val noDis = findViewById2 as TextView
+                val clickhere = findViewById3 as TextView
+
+                noDis.visibility = View.VISIBLE
+                clickhere.visibility = View.VISIBLE
+            }
+        } catch (e: Exception) {
+            // Handle any exceptions or errors
+        }
+
+    }
+
+    suspend fun getInventionsDataApproved(
+        context: Context,
+        findViewById1: Any,
+        findViewById2: Any,
+        findViewById3: Any
+    ) {
+        userRecyclerview = findViewById1 as RecyclerView
+        userRecyclerview.layoutManager = LinearLayoutManager(context)
+        userRecyclerview.setHasFixedSize(true)
+
+        try {
+            val dbref = FirebaseHelper.databaseInst.getReference("Inventions")
+                .child(FirebaseAuth.getInstance().currentUser?.uid.toString())
+
+            val dataSnapshot = withContext(Dispatchers.IO) {
+                dbref.get().await()
+            }
+
+            if (dataSnapshot.exists()) {
+                val tempList: MutableList<InventionModel> = mutableListOf()
+
+                // Go one level deeper by iterating through the children of each node
+                for (inventionSnapshot in dataSnapshot.children) {
+                    // Exclude nodes with key "sponsors" and "members" that have children
+                    if (inventionSnapshot.key == "sponsors" || inventionSnapshot.key == "members") {
+                        if (inventionSnapshot.hasChildren()) {
+                            continue
+                        }
+                    } else {
+                        val inv = inventionSnapshot.getValue(InventionModel::class.java)
+                        inv?.let {
+                            if(it.status == "Approved") {
+                                tempList.add(it)
+                            }
+                        }
+                    }
+                }
+
+                inventionsArrayList.clear()
+
+                inventionsArrayList.addAll(tempList)
+
+
+                if (tempList.isEmpty()) {
+                    val noDis = findViewById2 as TextView
+                    val clickhere = findViewById3 as TextView
+
+                    noDis.visibility = View.VISIBLE
+                    clickhere.visibility = View.VISIBLE
+                } else {
+                    val adapter = MyAdapter(inventionsArrayList) { item ->
+                        // Handle item click here
+                        val intent1 = Intent(context, InventionDetailsActivity::class.java)
+                        intent1.putExtra("invention", item)
+                        context.startActivity(intent1)
+                    }
+
+                    userRecyclerview.adapter = adapter
+                }
 
             } else {
                 val noDis = findViewById2 as TextView

@@ -24,7 +24,7 @@ class SponsorAdapter (private val sponsors: MutableList<Sponsor>) :
 
 
         holder.nameTextView.text = sponsor.name
-        holder.contractTextView.text = sponsor.ContractNumber
+        holder.contractTextView.text = sponsor.contractNumber
 
     }
 

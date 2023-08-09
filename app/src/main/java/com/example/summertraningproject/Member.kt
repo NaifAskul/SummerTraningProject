@@ -8,6 +8,5 @@ data class Member(
     var contribution: String = "0.00",
     var name: String = "",
     var organization: String = "",
-    var email: String = "",
-    var signOffBy: String = ""
+    var email: String = ""
 )

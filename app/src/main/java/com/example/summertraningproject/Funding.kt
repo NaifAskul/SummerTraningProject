@@ -22,7 +22,7 @@ import kotlinx.coroutines.withContext
 
 class Funding : AppCompatActivity() {
 
-    val arr = arrayOf("Details", "Researchers", "Funding", "Questions","Survey", "Confirm")
+    val arr = arrayOf("Details", "Researchers", "Funding", "Questions","Confirm")
     private val sponsorsList: MutableList<Sponsor> = mutableListOf()
     private lateinit var sponsorAdapter: SponsorAdapter
     private lateinit var citizenShip: String
@@ -178,8 +178,10 @@ class Funding : AppCompatActivity() {
             // Add the new member to the list
             sponsorsList.add(newSponsor)
 
-            // Notify the adapter about the data change (assuming sponsorAdapter is global or accessible)
-            sponsorAdapter.notifyDataSetChanged()
+            // Switch to the main thread and notify the adapter about the data change
+            withContext(Dispatchers.Main) {
+                sponsorAdapter.notifyDataSetChanged()
+            }
 
         } catch (e: Exception) {
             e.printStackTrace()

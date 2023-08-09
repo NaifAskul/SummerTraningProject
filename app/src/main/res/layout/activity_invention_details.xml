@@ -125,7 +125,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView55"
@@ -163,7 +163,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView111"
@@ -201,7 +201,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView555"
@@ -239,7 +239,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView444"
@@ -276,7 +276,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView66"
@@ -313,7 +313,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView43.1"
@@ -350,7 +350,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView43.11"
@@ -387,7 +387,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textView78.4"
@@ -422,58 +422,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView667"
+                            android:id="@+id/textView66775"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/raleway_semibold"
-                            android:text="Created By"
+                            android:text="Created in"
                             android:textColor="@color/TextColor"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/textView6667"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/raleway_semibold"
-                            android:text="None"
-                            android:textAlignment="viewEnd"
-                            android:textColor="@color/TextColor"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:alpha="0.5"
-                        android:background="#585858" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView99"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/raleway_semibold"
-                            android:text="Modified By"
-                            android:textColor="@color/TextColor"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/textView995"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -519,8 +482,8 @@
 
                 <LinearLayout
                     android:id="@+id/linearLayout55"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="60dp"
                     android:layout_marginEnd="24dp"
@@ -534,7 +497,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
 
@@ -629,18 +592,428 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView2">
 
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="vertical">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                                    <TextView
+                                        android:id="@+id/textView123.1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="Introduction *"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
 
-                </LinearLayout>
+                                    <TextView
+                                        android:id="@+id/T1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="None"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="16sp"/>
+
+                                </LinearLayout>
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_margin="10dp"
+                                    android:alpha="0.5"
+                                    android:background="#585858" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textView768"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="Invention domain(s)"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/T2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="None"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="16sp"/>
+
+                                </LinearLayout>
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_margin="10dp"
+                                    android:alpha="0.5"
+                                    android:background="#585858" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textView667"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="Invention keywords *"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/T3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="None"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="16sp"/>
+
+
+                                </LinearLayout>
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_margin="10dp"
+                                    android:alpha="0.5"
+                                    android:background="@color/TextColor" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textView6679"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="Literature review"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/T4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="None"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="16sp"/>
+
+                                </LinearLayout>
+
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_margin="10dp"
+                                    android:alpha="0.5"
+                                    android:background="@color/TextColor" />
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textView6678"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="State the problem you are solving *"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
+
+
+                                    <TextView
+                                        android:id="@+id/T5"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="None"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="16sp"/>
+
+                                </LinearLayout>
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_margin="10dp"
+                                    android:alpha="0.5"
+                                    android:background="@color/TextColor" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textView6677"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="Specify the disadvantages of the invention *"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
+
+
+
+                                    <TextView
+                                        android:id="@+id/T6"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="None"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="16sp"/>
+
+                                </LinearLayout>
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_margin="10dp"
+                                    android:alpha="0.5"
+                                    android:background="@color/TextColor" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textView6673"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="State your proposed solution to the problem *"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
+
+
+
+                                    <TextView
+                                        android:id="@+id/T7"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="None"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="16sp"/>
+
+                                </LinearLayout>
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_margin="10dp"
+                                    android:alpha="0.5"
+                                    android:background="@color/TextColor" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textView6672"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="Describe the methodology of your invention Design *"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
+
+
+                                    <TextView
+                                        android:id="@+id/T8"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="None"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="16sp"/>
+
+                                </LinearLayout>
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_margin="10dp"
+                                    android:alpha="0.5"
+                                    android:background="@color/TextColor" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textView66722"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="Specify the advantages of the invention *"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
+
+
+
+                                    <TextView
+                                        android:id="@+id/T9"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="None"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="16sp"/>
+
+                                </LinearLayout>
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_margin="10dp"
+                                    android:alpha="0.5"
+                                    android:background="@color/TextColor" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textView667222"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="Preliminary results  "
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
+
+
+                                    <TextView
+                                        android:id="@+id/T10"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="None"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="16sp"/>
+
+
+                                </LinearLayout>
+
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_margin="10dp"
+                                    android:alpha="0.5"
+                                    android:background="@color/TextColor" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textView6632"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text=" References *"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
+                                    <TextView
+                                        android:id="@+id/T11"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/raleway_semibold"
+                                        android:text="None"
+                                        android:textAlignment="viewStart"
+                                        android:textColor="@color/TextColor"
+                                        android:textSize="16sp"/>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView3333"
+                android:id="@+id/cardView33333"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -679,10 +1052,155 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView2">
 
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView33"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView13"
+                            android:layout_width="296dp"
+                            android:layout_height="114dp"
+                            android:layout_marginEnd="16dp"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="Has the date of conception of invention been documented in a laboratory notebook (or other documents)?*"
+                            android:textColor="@color/TextColor"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:layout_editor_absoluteY="350dp" />
+
+                        <TextView
+                            android:id="@+id/T111"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="None"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/TextColor"
+                            android:textSize="16sp"/>
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="10dp"
+                        android:alpha="0.5"
+                        android:background="#585858" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView12"
+                            android:layout_width="296dp"
+                            android:layout_height="114dp"
+                            android:layout_marginEnd="16dp"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="Did you search for previous disclosures by others of similar inventions (for example did you carry out a search for prior art patents)?*"
+                            android:textColor="@color/TextColor"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:layout_editor_absoluteY="225dp" />
+
+                        <TextView
+                            android:id="@+id/T222"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="None"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/TextColor"
+                            android:textSize="16sp"/>
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="10dp"
+                        android:alpha="0.5"
+                        android:background="#585858" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView10"
+                            android:layout_width="296dp"
+                            android:layout_height="114dp"
+                            android:layout_marginEnd="16dp"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="Have you made a prototype of your invention or practiced your invention?*"
+                            android:textColor="@color/TextColor"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:layout_editor_absoluteY="114dp" />
+
+                        <TextView
+                            android:id="@+id/T333"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="None"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/TextColor"
+                            android:textSize="16sp"/>
+
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="10dp"
+                        android:alpha="0.5"
+                        android:background="@color/TextColor" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="296dp"
+                            android:layout_height="114dp"
+                            android:layout_marginEnd="16dp"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="Were there any prior public disclosure(s) or are there any anticipated disclosure(s), either written or oral, of the Invention?*"
+                            android:textColor="@color/TextColor"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:layout_editor_absoluteY="0dp" />
+
+
+                        <TextView
+                            android:id="@+id/T44"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/raleway_semibold"
+                            android:text="None"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/TextColor"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 

@@ -12,8 +12,10 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.example.summertraningproject.databinding.ActivityEditPageBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.storage.FirebaseStorage
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -48,9 +50,19 @@ class EditPage : AppCompatActivity() {
         }
 
         profileImage = findViewById<ImageView>(R.id.profileImage)
+
+        // Load the user's profile image from Firebase Storage and display it
+        val storageRef = FirebaseStorage.getInstance().reference
+        val imageRef = storageRef.child("profile_images/${FirebaseAuth.getInstance().currentUser?.uid}")
+
+        imageRef.downloadUrl.addOnSuccessListener { downloadUri ->
+            Glide.with(this).load(downloadUri).into(profileImage)
+        }.addOnFailureListener { exception ->
+
+        }
+
         profileImage.setOnClickListener {
             pickImageFromGallery()
-
         }
 
         val CourtesyTitle = findViewById<Spinner>(R.id.spinner1)
@@ -326,7 +338,26 @@ class EditPage : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == IMAGE_REQUEST_CODE && resultCode == RESULT_OK) {
-            profileImage.setImageURI(data?.data)
+            val imageUri = data?.data
+
+            if (imageUri != null) {
+                // Upload the image to Firebase Storage
+                val storageRef = FirebaseStorage.getInstance().reference
+                val imageRef =
+                    storageRef.child("profile_images/${FirebaseAuth.getInstance().currentUser?.uid}")
+
+                profileImage.setImageURI(imageUri)
+
+
+                imageRef.putFile(imageUri).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+
+                    } else {
+                        // Image upload failed
+                        Toasty.error(this, "Image upload failed", Toasty.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
     }
 }

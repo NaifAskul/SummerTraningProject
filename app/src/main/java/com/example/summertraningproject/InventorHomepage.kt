@@ -5,8 +5,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.storage.FirebaseStorage
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
@@ -17,6 +20,11 @@ import kotlinx.coroutines.withContext
 class InventorHomepage : AppCompatActivity() {
 
     private val mainScope = MainScope()
+    private lateinit var profileImage: ImageView
+
+    companion object {
+        val IMAGE_REQUEST_CODE = 1_000;
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,11 +33,24 @@ class InventorHomepage : AppCompatActivity() {
 
         // Call the function within a coroutine scope on the main thread
         mainScope.launch {
+
             getInventorData(this@InventorHomepage)
-            FirebaseHelper.getInventionsData(this@InventorHomepage,findViewById(R.id.recyclerView),findViewById(R.id.textView5),findViewById(R.id.textView8))
+            FirebaseHelper.getInventionsDataApproved(this@InventorHomepage,findViewById(R.id.recyclerView),findViewById(R.id.textView5),findViewById(R.id.textView8))
         }
 
 
+        profileImage = findViewById<ImageView>(R.id.profileImage)
+
+       // Load the user's profile image from Firebase Storage and display it
+        val storageRef = FirebaseStorage.getInstance().reference
+        val imageRef =
+            storageRef.child("profile_images/${FirebaseAuth.getInstance().currentUser?.uid}")
+
+        imageRef.downloadUrl.addOnSuccessListener { downloadUri ->
+            Glide.with(this).load(downloadUri).into(profileImage)
+        }.addOnFailureListener { exception ->
+
+        }
 
 
         val back = findViewById<Button>(R.id.button1)

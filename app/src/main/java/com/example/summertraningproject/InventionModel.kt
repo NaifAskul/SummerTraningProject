@@ -23,10 +23,20 @@ data class InventionModel(var createDate : String? = "None",
                           var proposed_solution: String? = "None",
                           var preliminary_results  : String? = "None",
                           var advantages_of_the_invention: String? = "None",
+                          var methodology: String? = "None",
                           var disadvantages_of_the_invention: String? = "None",
                           var references: String? = "None",
-                          var fileNameQ: String? = "None") : Parcelable {
+                          var fileNameQ: String? = "None",
+                          val isDateOfConceptionDocumented: String? = "None",
+                          val isPriorArtPatentsSearched: String? = "None",
+                          val isPrototypeMade: String? = "None",
+                          val isPriorPublicDisclosure: String? = "None") : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -75,6 +85,11 @@ data class InventionModel(var createDate : String? = "None",
         parcel.writeString(disadvantages_of_the_invention)
         parcel.writeString(references)
         parcel.writeString(fileNameQ)
+        parcel.writeString(methodology)
+        parcel.writeString(isDateOfConceptionDocumented)
+        parcel.writeString(isPriorArtPatentsSearched)
+        parcel.writeString(isPrototypeMade)
+        parcel.writeString(isPriorPublicDisclosure)
     }
 
     override fun describeContents(): Int {

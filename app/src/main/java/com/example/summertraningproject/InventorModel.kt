@@ -19,4 +19,6 @@ data class InventorModel  (
     var ModifiedBy: String? = "None",
     var Suffix: String? = "None",
     var PhoneNum: String? = "None",
-    var TotalDistributions: String? = "None") : Serializable
+    var TotalDistributions: String? = "None",
+    var Image: String? = "None",
+    var userType: String? = "None" ) : Serializable
