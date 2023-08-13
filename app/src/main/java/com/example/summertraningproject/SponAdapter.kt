@@ -11,7 +11,7 @@ class SponAdapter(private val sponsorList: List<Sponsor>) :
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val sponsorNameTextView: TextView = view.findViewById(R.id.T5)
-        val sponsorCountryTextView: TextView = view.findViewById(R.id.T1)
+        val sponsorCountryTextView: TextView = view.findViewById(R.id.T88)
         val contractNumberTextView: TextView = view.findViewById(R.id.T2)
         val contactInformationTextView: TextView = view.findViewById(R.id.T3)
     }

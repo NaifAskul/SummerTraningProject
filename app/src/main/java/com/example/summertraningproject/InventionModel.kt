@@ -2,35 +2,37 @@ package com.example.summertraningproject
 
 import android.os.Parcel
 import android.os.Parcelable
-import java.io.Serializable
 
-data class InventionModel(var createDate : String? = "None",
-                          var inventionName: String? = "None",
-                          var no: String? = "None",
-                          var status: String? = "None",
-                          var type : String? = "None",
-                          var description: String? = "None",
-                          var first_Public_Disclosure: String? = "None",
-                          var circumstances_of_Disclosure: String? = "None",
-                          var suggested_Keywords : String? = "None",
-                          var fileNameD: String? = "None",
-                          var fileNameS: String? = "None",
-                          var intro: String? = "None",
-                          var invDomain: String? = "None",
-                          var keywords : String? = "None",
-                          var literature_review: String? = "None",
-                          var state_the_problem: String? = "None",
-                          var proposed_solution: String? = "None",
-                          var preliminary_results  : String? = "None",
-                          var advantages_of_the_invention: String? = "None",
-                          var methodology: String? = "None",
-                          var disadvantages_of_the_invention: String? = "None",
-                          var references: String? = "None",
-                          var fileNameQ: String? = "None",
-                          val isDateOfConceptionDocumented: String? = "None",
-                          val isPriorArtPatentsSearched: String? = "None",
-                          val isPrototypeMade: String? = "None",
-                          val isPriorPublicDisclosure: String? = "None") : Parcelable {
+data class InventionModel(
+    var createDate: String? = "None",
+    var inventionName: String? = "None",
+    var no: String? = "None",
+    var status: String? = "None",
+    var type: String? = "None",
+    var description: String? = "None",
+    var first_Public_Disclosure: String? = "None",
+    var circumstances_of_Disclosure: String? = "None",
+    var suggested_Keywords: String? = "None",
+    var fileNameD: String? = "None",
+    var fileNameS: String? = "None",
+    var intro: String? = "None",
+    var invDomain: String? = "None",
+    var keywords: String? = "None",
+    var literature_review: String? = "None",
+    var state_the_problem: String? = "None",
+    var proposed_solution: String? = "None",
+    var preliminary_results: String? = "None",
+    var advantages_of_the_invention: String? = "None",
+    var methodology: String? = "None",
+    var disadvantages_of_the_invention: String? = "None",
+    var references: String? = "None",
+    var fileNameQ: String? = "None",
+    val isDateOfConceptionDocumented: String? = "None",
+    val isPriorArtPatentsSearched: String? = "None",
+    val isPrototypeMade: String? = "None",
+    val isPriorPublicDisclosure: String? = "None",
+) : Parcelable {
+
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
@@ -59,7 +61,10 @@ data class InventionModel(var createDate : String? = "None",
         parcel.readString(),
         parcel.readString(),
         parcel.readString()
-    ) {
+    )
+
+    override fun describeContents(): Int {
+        return 0
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -82,18 +87,14 @@ data class InventionModel(var createDate : String? = "None",
         parcel.writeString(proposed_solution)
         parcel.writeString(preliminary_results)
         parcel.writeString(advantages_of_the_invention)
+        parcel.writeString(methodology)
         parcel.writeString(disadvantages_of_the_invention)
         parcel.writeString(references)
         parcel.writeString(fileNameQ)
-        parcel.writeString(methodology)
         parcel.writeString(isDateOfConceptionDocumented)
         parcel.writeString(isPriorArtPatentsSearched)
         parcel.writeString(isPrototypeMade)
         parcel.writeString(isPriorPublicDisclosure)
-    }
-
-    override fun describeContents(): Int {
-        return 0
     }
 
     companion object CREATOR : Parcelable.Creator<InventionModel> {

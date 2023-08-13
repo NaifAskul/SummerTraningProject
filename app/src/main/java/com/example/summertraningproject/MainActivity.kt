@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.firebase.messaging.FirebaseMessaging
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         EmailEditText = findViewById(R.id.emailEditText)
         passwordEditText = findViewById(R.id.PasswordEditText)
@@ -42,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 
             ResetPassword(email)
         }
+
 
 
         val img = findViewById<ImageView>(R.id.imageView)

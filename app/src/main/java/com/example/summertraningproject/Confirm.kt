@@ -109,7 +109,7 @@ class Confirm : AppCompatActivity() {
             val CI = findViewById<TextView>(R.id.textView6667)
 
             // Questions
-            val Q1 = findViewById<TextView>(R.id.T1)
+            val Q1 = findViewById<TextView>(R.id.T88)
             val Q2 = findViewById<TextView>(R.id.T2)
             val Q3 = findViewById<TextView>(R.id.T3)
             val Q4 = findViewById<TextView>(R.id.T4)

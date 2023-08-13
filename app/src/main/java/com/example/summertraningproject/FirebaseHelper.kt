@@ -1,14 +1,20 @@
 package com.example.summertraningproject
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.messaging.FirebaseMessaging
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
@@ -30,20 +36,48 @@ object FirebaseHelper {
 
                 if (it.isSuccessful) {
 
+                    requestNotificationPermission()
+
                     if (Email == "admin@gmail.com") {
 
                         startAdminActivity(context)
 
                     } else {
 
-                        val userId = FirebaseAuth.getInstance().currentUser?.uid
-                        if (userId != null) {
-                            val InvReference =
-                                FirebaseHelper.databaseInst.getReference("Inventors").child(userId).get()
+                        val UserId = FirebaseAuth.getInstance().currentUser?.uid
+                        if (UserId != null) {
+                            val invReference = FirebaseHelper.databaseInst.getReference("Inventors").child(UserId)
 
 
-                            startMainPageActivity(context)
+                            // Add a ValueEventListener to retrieve data
+                            invReference.addValueEventListener(object : ValueEventListener {
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    if (snapshot.exists()) {
+
+                                        if (snapshot.child("userType").value.toString() == "Certified arbitrator") {
+
+                                            startCertifiedArbitratorMainPageActivity(context)
+
+                                        }else if (snapshot.child("userType").value.toString() == "Admin"){
+
+                                            startAdminActivity(context)
+
+                                        }else if(snapshot.child("userType").value.toString() == "Inventor"){
+
+                                            startInventorMainPageActivity(context)
+
+                                        }
+
+                                    }
+
+                                }
+
+                                override fun onCancelled(error: DatabaseError) {
+                                    // Handle any errors that occur while retrieving data
+                                }
+                            })
                         }
+
                     }
 
                 } else {
@@ -56,13 +90,61 @@ object FirebaseHelper {
             }.await()
         }
 
+    private fun requestNotificationPermission() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val token = task.result
+
+                // Send the token to your server or store it in the database
+                sendTokenToServer(token)
+            } else {
+                // Handle token retrieval failure
+            }
+        }
+    }
+
+    private fun sendTokenToServer(token: String?) {
+
+        // In your Kotlin code, get the FCM token
+        FirebaseMessaging.getInstance().token
+            .addOnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w(
+                        TAG,
+                        "Fetching FCM registration token failed",
+                        task.exception
+                    )
+                    return@addOnCompleteListener
+                }
+
+                // Get the FCM token
+                val token = task.result
+
+                val invetorID = FirebaseAuth.getInstance().currentUser?.uid
+
+                // Store the token in the Realtime Database
+                val userId = invetorID.toString().trim()
+                val tokenRef =
+                    FirebaseDatabase.getInstance().reference.child("Inventors")
+                        .child(userId).child("fcmToken")
+                tokenRef.setValue(token)
+
+            }
+
+    }
+
     fun startAdminActivity(context: Context) {
         val intent = Intent(context, Admin::class.java)
         context.startActivity(intent)
     }
 
-    fun startMainPageActivity(context: Context) {
+    fun startInventorMainPageActivity(context: Context) {
         val intent = Intent(context, MainPage::class.java)
+        context.startActivity(intent)
+    }
+
+    fun startCertifiedArbitratorMainPageActivity(context: Context) {
+        val intent = Intent(context, CertifiedArbitrator::class.java)
         context.startActivity(intent)
     }
 
@@ -71,39 +153,49 @@ object FirebaseHelper {
 
             auth.createUserWithEmailAndPassword(Email, password).addOnCompleteListener {
 
-                if (it.isSuccessful) {
+                    if (it.isSuccessful) {
 
-                    val invetorID = FirebaseAuth.getInstance().currentUser?.uid
-                    val interest = "None"
+                        val invetorID = FirebaseAuth.getInstance().currentUser?.uid
+                        val interest = "None"
 
-                    val inventors = InventorModel(Email, password, invetorID, interest)
-
-                    Reference.child("Inventors").child(invetorID.toString()).setValue(inventors)
-                        .addOnCompleteListener {
-
-                            Reference.child("Inventors").child(invetorID.toString()).child("userType").setValue(Utype)
-
-                            Toasty.success(
-                                context,
-                                " User has been added Successfully. ",
-                                Toasty.LENGTH_SHORT
-                            ).show()
+                        val inventors = InventorModel(Email, password, invetorID, interest)
 
 
-                        }.addOnFailureListener {
+                        Reference.child("Inventors").child(invetorID.toString()).setValue(inventors)
+                            .addOnCompleteListener {
 
-                            Toasty.error(context, "Inventor has not been added", Toasty.LENGTH_LONG)
-                                .show()
-                        }
+                                Reference.child("Inventors").child(invetorID.toString())
+                                    .child("userType").setValue(Utype)
 
-                } else {
+                                Toasty.success(
+                                    context,
+                                    " User has been added Successfully. ",
+                                    Toasty.LENGTH_SHORT
+                                ).show()
 
-                    Toasty.error(context, " Email or Password is invalid ", Toasty.LENGTH_SHORT)
-                        .show()
 
-                }
+                            }.addOnFailureListener {
 
-            }.await()
+                                Toasty.error(
+                                    context,
+                                    "Inventor has not been added",
+                                    Toasty.LENGTH_LONG
+                                )
+                                    .show()
+                            }
+
+                    } else {
+
+                        Toasty.error(context, " Email or Password is invalid ", Toasty.LENGTH_SHORT)
+                            .show()
+
+                    }
+
+
+
+                }.await()
+
+
         }
 
 
@@ -185,6 +277,87 @@ object FirebaseHelper {
         }
 
     }
+
+    suspend fun getInventionsList(
+        context: Context,
+        findViewById1: Any,
+        findViewById2: Any,
+        id: String
+    ) {
+        userRecyclerview = findViewById1 as RecyclerView
+        userRecyclerview.layoutManager = LinearLayoutManager(context)
+        userRecyclerview.setHasFixedSize(true)
+
+        try {
+            val dbref = databaseInst.getReference("Inventions")
+                .child(id)
+
+            val dataSnapshot = withContext(Dispatchers.IO) {
+                dbref.get().await()
+            }
+
+            if (dataSnapshot.exists()) {
+                val tempList: MutableList<InventionModel> = mutableListOf()
+
+                // Go one level deeper by iterating through the children of each node
+                for (inventionSnapshot in dataSnapshot.children) {
+                    // Exclude nodes with key "sponsors" and "members" that have children
+                    if (inventionSnapshot.key == "sponsors" || inventionSnapshot.key == "members") {
+                        if (inventionSnapshot.hasChildren()) {
+                            continue
+                        }
+                    } else {
+                        val inv = inventionSnapshot.getValue(InventionModel::class.java)
+                        inv?.let {
+                            if(it.status != "Received") {
+
+
+                                tempList.add(it)
+                            }
+
+                        }
+                    }
+                }
+
+                inventionsArrayList.clear()
+                val noDis = findViewById2 as TextView
+
+                noDis.visibility = View.INVISIBLE
+                inventionsArrayList.addAll(tempList)
+
+
+                val adapter = MyAdapter(inventionsArrayList) { item ->
+                    // Handle item click here
+                    val intent1 = Intent(context, InventionsCAdetails::class.java)
+                    intent1.putExtra("invention", item)
+                    intent1.putExtra("id",id)
+                    context.startActivity(intent1)
+
+                }
+
+
+
+                userRecyclerview.adapter = adapter
+
+
+            } else {
+
+                Toasty.error(
+                    context,
+                    " Invention is not found ",
+                    Toasty.LENGTH_SHORT
+                ).show()
+
+                val noDis = findViewById2 as TextView
+
+                noDis.visibility = View.VISIBLE
+            }
+        } catch (e: Exception) {
+            // Handle any exceptions or errors
+        }
+
+    }
+
 
     suspend fun getInventionsDataApproved(
         context: Context,
@@ -276,6 +449,7 @@ object FirebaseHelper {
                 CreateDate,
                 inventionName,
                 reference.push().key,
+                FirebaseAuth.getInstance().currentUser?.uid.toString(),
                 status
             )
         )

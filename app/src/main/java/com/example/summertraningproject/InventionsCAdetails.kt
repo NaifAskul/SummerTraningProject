@@ -1,12 +1,10 @@
 package com.example.summertraningproject
 
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -15,13 +13,17 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.coroutines.*
+import es.dmoral.toasty.Toasty
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class InventionDetailsActivity : AppCompatActivity() {
+class InventionsCAdetails : AppCompatActivity() {
 
     private val storageRef = FirebaseStorage.getInstance().reference
     private val databaseRef = FirebaseDatabase.getInstance().reference
-    private val auth = FirebaseAuth.getInstance()
+    private lateinit var ID: String
+
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: reseAdapter
@@ -34,37 +36,49 @@ class InventionDetailsActivity : AppCompatActivity() {
     private lateinit var recyclerView3: RecyclerView
     private lateinit var adapter3: FileDataAdapter
     private lateinit var dataList3: MutableList<files>
-
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_invention_details)
+        setContentView(R.layout.activity_inventions_cadetails)
+
 
         val intent = intent
         val selectedInvention: InventionModel? = intent.getParcelableExtra("invention")
-
+        ID = intent.getStringExtra("id").toString()
         val back = findViewById<Button>(R.id.button1)
 
         back.setOnClickListener {
-            val intent = Intent(this@InventionDetailsActivity, InventorHomepage::class.java)
+            val intent = Intent(this@InventionsCAdetails, InventionsRequests::class.java)
             startActivity(intent)
         }
+
+
 
         dataList = mutableListOf()
         dataList2 = mutableListOf()
         dataList3 = mutableListOf()
 
         if (selectedInvention != null) {
-            val userId = FirebaseAuth.getInstance().currentUser?.uid
-            if (userId != null) {
+
+            if (ID != null) {
                 val invName = selectedInvention.inventionName.toString()
 
                 CoroutineScope(Dispatchers.Main).launch {
                     updateUI(selectedInvention)
-                    fetchMembersData(userId, invName)
-                    fetchSponsorData(userId, invName)
-                    fetchFilesData(userId, invName)
+                    fetchMembersData(ID, invName)
+                    fetchSponsorData(ID, invName)
+                    fetchFilesData(ID, invName)
                 }
+
+                val Approve = findViewById<Button>(R.id.button4)
+
+                Approve.setOnClickListener {
+
+                    val Ref = FirebaseHelper.databaseInst.getReference("Inventions")
+                        .child(ID).child(invName).child("status").setValue("Approved")
+
+
+                }
+
             }
         }
     }
@@ -209,11 +223,10 @@ class InventionDetailsActivity : AppCompatActivity() {
         Q9.text = selectedInvention.advantages_of_the_invention.toString()
         Q10.text = selectedInvention.preliminary_results.toString()
         Q11.text = selectedInvention.references.toString()
-
-        val userId = FirebaseAuth.getInstance().currentUser?.uid
-        if (userId != null) {
+        
+        if (ID != null) {
             val invReference = FirebaseHelper.databaseInst.getReference("Inventions")
-                .child(userId).child(selectedInvention.inventionName.toString())
+                .child(ID).child(selectedInvention.inventionName.toString())
 
             // Attach a ValueEventListener to read data from the database
             invReference.addValueEventListener(object : ValueEventListener {

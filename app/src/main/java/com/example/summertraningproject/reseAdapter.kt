@@ -10,7 +10,7 @@ class reseAdapter(private val dataList: List<rese>) :
     RecyclerView.Adapter<reseAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textViewT1: TextView = itemView.findViewById(R.id.T1)
+        val textViewT1: TextView = itemView.findViewById(R.id.T88)
         val textViewT2: TextView = itemView.findViewById(R.id.T2)
         val textViewT6: TextView = itemView.findViewById(R.id.T6)
         val textViewT4: TextView = itemView.findViewById(R.id.T4)

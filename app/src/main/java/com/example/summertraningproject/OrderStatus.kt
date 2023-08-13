@@ -32,8 +32,11 @@ class OrderStatus : AppCompatActivity() {
             FirebaseHelper.getInventionsData(this@OrderStatus,findViewById(R.id.recyclerView),findViewById(R.id.textView5),findViewById(R.id.textView8))
         }
 
-        newDis.setOnClickListener{
-            Toast.makeText(this," i forgot my password ", Toast.LENGTH_SHORT).show()
+        val ND = findViewById<TextView>(R.id.textView8)
+
+        ND.setOnClickListener {
+            val intent = Intent(this,NewDisclosure::class.java)
+            startActivity(intent)
         }
 
         val back = findViewById<Button>(R.id.button1)

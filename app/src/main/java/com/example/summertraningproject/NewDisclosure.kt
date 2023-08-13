@@ -17,6 +17,7 @@ import androidx.annotation.RequiresApi
 import com.anton46.stepsview.StepsView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.FirebaseStorage
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.CoroutineScope
@@ -175,6 +176,7 @@ class NewDisclosure : AppCompatActivity() {
                 if (userId != null) {
                     val InvReference =
                         FirebaseHelper.databaseInst.getReference("Inventions").child(userId).child(invName)
+
 
                     // Update the fields that are not empty
                     InvReference.child("type").setValue(DT)

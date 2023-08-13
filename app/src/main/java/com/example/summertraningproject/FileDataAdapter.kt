@@ -10,7 +10,7 @@ class FileDataAdapter(private val dataList: List<files>) :
     RecyclerView.Adapter<FileDataAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textViewFileName: TextView = itemView.findViewById(R.id.T1)
+        val textViewFileName: TextView = itemView.findViewById(R.id.T88)
         val textViewFileID: TextView = itemView.findViewById(R.id.T2)
         val textViewFileDownloadURL: TextView = itemView.findViewById(R.id.T3)
     }
