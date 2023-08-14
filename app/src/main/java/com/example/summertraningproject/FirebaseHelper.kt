@@ -66,6 +66,10 @@ object FirebaseHelper {
 
                                             startInventorMainPageActivity(context)
 
+                                        }else if(snapshot.child("userType").value.toString() == "Lawyer"){
+
+                                            startLawyerMainPageActivity(context)
+
                                         }
 
                                     }
@@ -135,6 +139,11 @@ object FirebaseHelper {
 
     fun startAdminActivity(context: Context) {
         val intent = Intent(context, Admin::class.java)
+        context.startActivity(intent)
+    }
+
+    fun startLawyerMainPageActivity(context: Context) {
+        val intent = Intent(context, Lawyer::class.java)
         context.startActivity(intent)
     }
 

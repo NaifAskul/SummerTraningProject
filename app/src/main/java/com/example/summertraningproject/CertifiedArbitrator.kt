@@ -16,5 +16,13 @@ class CertifiedArbitrator : AppCompatActivity() {
             val intent = Intent(this,InventionsRequests::class.java)
             startActivity(intent)
         }
+
+        val contactus = findViewById<ImageButton>(R.id.imageButton7)
+
+        contactus.setOnClickListener {
+            val intent = Intent(this@CertifiedArbitrator,contact_us::class.java)
+            startActivity(intent)
+        }
+
     }
 }

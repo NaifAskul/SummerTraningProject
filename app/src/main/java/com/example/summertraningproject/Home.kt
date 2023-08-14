@@ -36,6 +36,13 @@ class Home : Fragment() {
             startActivity(intent)
         }
 
+        val contactus = view.findViewById<ImageButton>(R.id.imageButton7)
+
+        contactus.setOnClickListener {
+            val intent = Intent(getActivity(),contact_us::class.java)
+            startActivity(intent)
+        }
+
 
     }
 }
